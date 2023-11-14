@@ -18,13 +18,13 @@ public:
     bool valid_move(int row, int col) const;
 
     bool make_move(int row, int col, Token player);
-    bool has_winner();
+    bool has_winner() const;
 
     Token get_winner() const;
 
-    std::vector<std::pair<int, int>> get_valid_moves();
+    __host__ __device__ std::vector<std::pair<int, int>> get_valid_moves_cuda() const;
 
-    Token get_Token(int row, int col);
+    Token get_Token(int row, int col) const;
 
 private:
     std::vector<std::vector<Token>> m_board;
