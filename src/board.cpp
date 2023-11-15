@@ -37,66 +37,18 @@ void Board::clear_space(){
     cudaFree(m_board);
 }
 
-/*
-{ //This needs to be more efficeient can be done on CUDA 
-        // Check rows
-        for (int row = 0; row < BOARD_SIZE; ++row) {
-            for (int col = 0; col <= BOARD_SIZE - WINNING_LENGTH; ++col) {
-                Token winner = check_winner(row, col, 0, 1);
-                if (winner != Token::EMPTY) {
-                    return winner;
-                }
-            }
-        }
-
-        // Check columns
-        for (int row = 0; row <= BOARD_SIZE - WINNING_LENGTH; ++row) {
-            for (int col = 0; col < BOARD_SIZE; ++col) {
-                Token winner = check_winner(row, col, 1, 0);
-                if (winner != Token::EMPTY) {
-                    return winner;
-                }
-            }
-        }
-
-        // Check diagonals
-        for (int row = 0; row <= BOARD_SIZE - WINNING_LENGTH; ++row) {
-            for (int col = 0; col <= BOARD_SIZE - WINNING_LENGTH; ++col) {
-                Token winner = check_winner(row, col, 1, 1);
-                if (winner != Token::EMPTY) {
-                    return winner;
-                }
-            }
-        }
-        for (int row = WINNING_LENGTH - 1; row < BOARD_SIZE; ++row) {
-            for (int col = 0; col <= BOARD_SIZE - WINNING_LENGTH; ++col) {
-                Token winner = check_winner(row, col, -1, 1);
-                if (winner != Token::EMPTY) {
-                    return winner;
-                }
-            }
-        }
-
-        return Token::EMPTY;
-    }
-*/
-
-
-// GPU implementation of get valid moves needs to be written over here
-/*
- const { // This can be done on CUDA as well
-        std::vector<std::pair<int, int>> valid_moves;
-        for (int row = 0; row < BOARD_SIZE; ++row) {
-            for (int col = 0; col < BOARD_SIZE; ++col) {
-                if (valid_move(row, col)) {
-                    valid_moves.emplace_back(row, col);
-                }
-            }
-        }
-        return valid_moves;
-    }
-*/
-
+// If theres no winner returns Token::EMPTY, if there is a winner return the player Token::BLACK/Token::WHITE
+Token Board::get_winner() const{
+    Token winner = Token::EMPTY;
+    dim3 block(8, 8);
+    dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
+    Token* d_winner;
+    cudaMalloc(&d_winner, sizeof(Token));
+    check_winner_kernel<<<grid, block>>>(m_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
+    cudaMemcpy(&winner, d_winner, sizeof(Token), cudaMemcpyDeviceToHost);
+    cudaFree(d_winner);
+    return winner;
+}
 Token Board::get_Token(int row, int col) const {
     return m_board[row][col];
 }
@@ -108,6 +60,10 @@ __global__ void check_winner_kernel(Token* board, Token* winner, int size, int w
         return
     }
     Token player = board[i*size + j];
+    if (player == Token::EMPTY){
+        *winner = Token::EMPTY;
+        return;
+    }
     Token* vertical_up[win_len - 1] = {Token::EMPTY};
     Token* vertical_down[win_len -1];
     Token* horizontal_left[win_len -1];
@@ -177,19 +133,3 @@ __global__ void check_winner_kernel(Token* board, Token* winner, int size, int w
         return;
     }
 }
-// CUDA kernel for check_winner needs to be written over here
-/* // This can be done on CUDA as well 
-        Token first_Token = m_board[row][col];
-        if (first_Token == Token::EMPTY) {
-            return Token::EMPTY;
-        }
-        for (int i = 1; i < WINNING_LENGTH; ++i) {
-            int r = row + i * row_delta;
-            int c = col + i * col_delta;
-            if (m_board[r][c] != first_Token) {
-                return Token::EMPTY;
-            }
-        }
-        return first_Token;
-    }*/
-

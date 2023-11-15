@@ -43,6 +43,4 @@ public:
 private:
     // Create a 2D dynamic array of size BOARD_SIZE x BOARD_SIZE
     Token* board;
-
-    Token check_winner(int row, int col, int row_delta, int col_delta) const;
 };
