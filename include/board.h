@@ -4,7 +4,8 @@
 #include <thrust/device_vector.h>
 #include <thrust/host_vector.h>
 
-struct Position {
+struct Position
+{
     int row;
     int col;
 };
@@ -15,11 +16,11 @@ enum Token
     WHITE
 };
 
-class Board {
+class Board
+{
 public:
     static const int BOARD_SIZE = 16;
     static const int WINNING_LENGTH = 5;
-
 
     Board();
     Board(const Board &other) = default;
@@ -34,13 +35,12 @@ public:
 
     Token get_winner() const;
 
-    std::vector<std::pair<int, int>> get_valid_moves();
-
+    std::vector<Position> get_valid_moves();
 
     Token get_Token(int row, int col) const;
     std::vector<std::vector<Token>> get_board() const;
 
 private:
     // Create a 2D dynamic array of size BOARD_SIZE x BOARD_SIZE
-    Token* board;
+    Token *board;
 };
