@@ -97,10 +97,86 @@ void Board::clear_space(){
     }
 */
 
-Board::Token Board::get_Token(int row, int col) const {
+Token Board::get_Token(int row, int col) const {
     return m_board[row][col];
 }
 
+__global__ void check_winner_kernel(Token* board, Token* winner, int size, int win_len){
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    int j = blockIdx.y * blockDim.y + threadIdx.y;
+    if (i > size || j > size){
+        return
+    }
+    Token player = board[i*size + j];
+    Token* vertical_up[win_len - 1] = {Token::EMPTY};
+    Token* vertical_down[win_len -1];
+    Token* horizontal_left[win_len -1];
+    Token* horizontal_right[win_len-1];
+    Token* diag1[win_len-1];
+    Token* diag2[win_len-1];
+    Token* diag3[win_len-1];
+    Token* diag4[win_len-1];
+
+    // Vertical Checks, horizontal checks, diagonals
+    for (int k = 0; k < win_len-1; k++){
+        if(i+k < size){
+            vertical_up[k] = board[(i+k)*size + j];
+        }
+        if (i-k > 0){
+            vertical_down[k] = board[(i-k)*size + j];
+        }
+        if (j-k > 0){
+            horizontal_left[k] = board[i*size + (j-k)];
+        }
+        if (j+k < size){
+            horizontal_right[k] = board[i*size + (j+k)];
+        }
+        if (i+k < size && j+k < size){
+            diag1[k] = board[(i+k)*size + (j+k)];
+        }
+        if (i-k > 0 && j-k > 0){
+            diag2[k] = board[(i-k)*size + (j-k)];
+        }
+        if (i-k > 0 && j+k < size){
+            diag3[k] = board[(i-k)*size + (j+k)];
+        }
+        if (i+k < size && j-k > 0){
+            diag4[k] = board[(i+k)*size + (j-k)];
+        }
+    }
+    // Check for winner
+    int up, down, left, right, diag1, diag2, diag3, diag4 = 1;
+    for (int k = 0; k < win_len; k++){
+        if (vertical_up[k] != player && up != 0){
+            up = 0;
+        }
+        if (vertical_down[k] != player && down != 0){
+            down = 0;
+        }
+        if (horizontal_left[k] != player && left != 0){
+            left = 0;
+        }
+        if (horizontal_right[k] != player && right != 0){
+            right = 0;
+        }
+        if (diag1[k] != player && diag1 != 0){
+            diag1 = 0;
+        }
+        if (diag2[k] != player && diag2 != 0){
+            diag2 = 0;
+        }
+        if (diag3[k] != player && diag3 != 0){
+            diag3 = 0;
+        }
+        if (diag4[k] != player && diag4 != 0){
+            diag4 = 0;
+        }   
+    }
+    if (up == 1 || down == 1 || left == 1 || right == 1 || diag1 == 1 || diag2 == 1 || diag3 == 1 || diag4 == 1){
+        *winner = player;
+        return;
+    }
+}
 // CUDA kernel for check_winner needs to be written over here
 /* // This can be done on CUDA as well 
         Token first_Token = m_board[row][col];
