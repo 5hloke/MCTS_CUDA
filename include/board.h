@@ -6,14 +6,15 @@ public:
     static const int BOARD_SIZE = 16;
     static const int WINNING_LENGTH = 5;
 
-    enum Token {
+    enum Token
+    {
         EMPTY,
         BLACK,
         WHITE
     };
 
     Board();
-    Board(const Board& other) = default;
+    Board(const Board &other) = default;
     bool valid_move(int row, int col) const;
 
     bool make_move(int row, int col, Token player);
@@ -23,7 +24,7 @@ public:
 
     bool has_winner() const;
 
-    Token get_winner() const ;
+    Token get_winner() const;
 
     std::vector<std::pair<int, int>> get_valid_moves();
 
