@@ -76,14 +76,14 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
         *winner = Token::EMPTY;
         return;
     }
-    Token *vertical_up[win_len - 1] = {Token::EMPTY};
-    Token *vertical_down[win_len - 1];
-    Token *horizontal_left[win_len - 1];
-    Token *horizontal_right[win_len - 1];
-    Token *diag1[win_len - 1];
-    Token *diag2[win_len - 1];
-    Token *diag3[win_len - 1];
-    Token *diag4[win_len - 1];
+    Token *vertical_up[win_len - 1] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
+    Token *vertical_down[win_len - 1] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};;
+    Token *horizontal_left[win_len - 1] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};;
+    Token *horizontal_right[win_len - 1] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};;
+    Token *diag1[win_len - 1] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
+    Token *diag2[win_len - 1] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
+    Token *diag3[win_len - 1] ={Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
+    Token *diag4[win_len - 1] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
 
     // Vertical Checks, horizontal checks, diagonals
     for (int k = 0; k < win_len - 1; k++)
