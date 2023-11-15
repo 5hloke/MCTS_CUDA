@@ -22,8 +22,20 @@ bool Board::has_winner() const {
     return get_winner() != Token::EMPTY;
 }
 
-
+void Board::move_to_cpu() {
+    // This function is not required for the assignment
+    cudaMalloc(&m_board, BOARD_SIZE * BOARD_SIZE * sizeof(Token));
+    cudaMemcpy(m_board, m_board, BOARD_SIZE * BOARD_SIZE * sizeof(Token), cudaMemcpyHostToDevice);
+}
+void Board::move_to_gpu(){
+    // This function is not required for the assignment
+    cudaMemcpy(m_board, m_board, BOARD_SIZE * BOARD_SIZE * sizeof(Token), cudaMemcpyDeviceToHost);
+}
 // CUDA kernel for get_winner needs to be written over here 
+void Board::clear_space(){
+    // This function is not required for the assignment
+    cudaFree(m_board);
+}
 
 /*
 { //This needs to be more efficeient can be done on CUDA 
@@ -85,7 +97,7 @@ bool Board::has_winner() const {
     }
 */
 
-Token Board::get_Token(int row, int col) const {
+Board::Token Board::get_Token(int row, int col) const {
     return m_board[row][col];
 }
 
