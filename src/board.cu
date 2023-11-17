@@ -8,6 +8,7 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
         return;
     }
     Token player = board[i * size + j];
+
     if (player == Token::EMPTY)
     {
         *winner = Token::EMPTY;
@@ -22,8 +23,8 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
     Token diag2[4] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
     Token diag3[4] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
     Token diag4[4] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
-
     // Vertical Checks, horizontal checks, diagonals
+
     for (int k = 0; k < n_len; k++)
     {
         if (i + k < size)
@@ -59,9 +60,9 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
             diag4[k] = board[(i + k) * size + (j - k)];
         }
     }
-    // Check for winner
-    int up, down, left, right, d1, d2, d3, d4 = 1;
-    for (int k = 0; k < win_len; k++)
+    // Check for winne
+    int up= 1, down=1, left=1, right=1, d1=1, d2=1, d3=1, d4 = 1;
+    for (int k = 0; k < n_len; k++)
     {
         if (vertical_up[k] != player && up != 0)
         {
@@ -79,26 +80,29 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
         {
             right = 0;
         }
-        if (diag1[k] != player && diag1 != 0)
+        if (diag1[k] != player && d1 != 0)
         {
             d1 = 0;
         }
-        if (diag2[k] != player && diag2 != 0)
+        if (diag2[k] != player && d2 != 0)
         {
             d2 = 0;
         }
-        if (diag3[k] != player && diag3 != 0)
+        if (diag3[k] != player && d3 != 0)
         {
             d3 = 0;
         }
-        if (diag4[k] != player && diag4 != 0)
+        if (diag4[k] != player && d4 != 0)
         {
             d4 = 0;
         }
     }
     if (up == 1 || down == 1 || left == 1 || right == 1 || d1 == 1 || d2 == 1 || d3 == 1 || d4 == 1)
     {
+	printf("here");
+	printf("Winner Winner %d \n", player);
         *winner = player;
+	printf("lets see %d", *winner);
         return;
     }
 }
@@ -166,7 +170,7 @@ void Board::move_to_gpu()
     Token *dummy = new Token[BOARD_SIZE * BOARD_SIZE];
     for (int i = 0; i < BOARD_SIZE; i++)
     {
-        for (int j = 0; i < BOARD_SIZE; j++)
+        for (int j = 0; j < BOARD_SIZE; j++)
         {
             dummy[i * BOARD_SIZE + j] = m_board[i][j];
         }
@@ -205,6 +209,7 @@ Token Board::get_winner() const
     cudaMalloc(&d_winner, sizeof(Token));
     check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
     cudaMemcpy(&winner, d_winner, sizeof(Token), cudaMemcpyDeviceToHost);
+    std::cout << winner << "here" << std::endl;
     cudaFree(d_winner);
     return winner;
 }
@@ -248,8 +253,4 @@ std::vector<Position> Board::get_valid_moves()
     delete[] host_valid_moves;
 
     return result;
-}
-int main()
-{
-    return 0;
 }
