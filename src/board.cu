@@ -29,19 +29,38 @@ bool Board::has_winner() const
 void Board::move_to_gpu()
 {
     // This function is not required for the assignment
-    cudaMalloc(&m_board, BOARD_SIZE * BOARD_SIZE * sizeof(Token)); // TODO :: Create a new variable for GPU . Do not use m_board. This has to be passed into the kernel
-    cudaMemcpy(m_board, m_board, BOARD_SIZE * BOARD_SIZE * sizeof(Token), cudaMemcpyHostToDevice);
+    Token* dummy = new Token[BOARD_SIZE * BOARD_SIZE];
+    for (int i = 0; i < BOARD_SIZE; i++)
+    {
+        for (int j = 0; i < BOARD_SIZE; j++)
+        {
+            dummy[i * BOARD_SIZE + j] = m_board[i][j];
+        }
+    }
+    cudaMalloc(&d_board, BOARD_SIZE * BOARD_SIZE * sizeof(Token)); // TODO :: Create a new variable for GPU . Do not use m_board. This has to be passed into the kernel
+    cudaMemcpy(d_board, dummy, BOARD_SIZE * BOARD_SIZE * sizeof(Token), cudaMemcpyHostToDevice);
+    delete [] dummy;
+
 }
 void Board::move_to_cpu()
 {
     // This function is not required for the assignment
-    cudaMemcpy(m_board, m_board, BOARD_SIZE * BOARD_SIZE * sizeof(Token), cudaMemcpyDeviceToHost);
+    Token *dummy = new Token[BOARD_SIZE * BOARD_SIZE];
+    cudaMemcpy(dummy, d_board, BOARD_SIZE * BOARD_SIZE * sizeof(Token), cudaMemcpyDeviceToHost); // TODO :: Create a new variable for GPU . Do not use m_board. This has to be passed into the kernel 
+    for (int i = 0; i < BOARD_SIZE; i++)
+    {
+        for (int j = 0; i < BOARD_SIZE; j++)
+        {
+            m_board[i][j] = dummy[i * BOARD_SIZE + j];
+        }
+    
 }
+
 // CUDA kernel for get_winner needs to be written over here
 void Board::clear_space()
 {
     // This function is not required for the assignment
-    cudaFree(m_board);
+    cudaFree(d_board);
 }
 
 // If theres no winner returns Token::EMPTY, if there is a winner return the player Token::BLACK/Token::WHITE
@@ -52,7 +71,7 @@ Token Board::get_winner() const
     dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
     Token *d_winner;
     cudaMalloc(&d_winner, sizeof(Token));
-    check_winner_kernel<<<grid, block>>>(m_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
+    check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
     cudaMemcpy(&winner, d_winner, sizeof(Token), cudaMemcpyDeviceToHost);
     cudaFree(d_winner);
     return winner;
@@ -191,7 +210,6 @@ std::vector<Position> Board::get_valid_moves()
 {
     // Copy the board to the device
     int board_size = Board::BOARD_SIZE;
-    move_to_gpu();
 
     // Allocate memory for valid moves on the device
     Position *device_valid_moves;
@@ -205,7 +223,7 @@ std::vector<Position> Board::get_valid_moves()
 
     dim3 block(8, 8);
     dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
-    valid_moves_kernel<<<grid, block>>>(m_board, board_size, WINNING_LENGTH, device_valid_moves, device_valid_moves_count);
+    valid_moves_kernel<<<grid, block>>>(d_board, board_size, WINNING_LENGTH, device_valid_moves, device_valid_moves_count);
 
     // Copy the result back to the host
     cudaMemcpy(&valid_moves_count, device_valid_moves_count, sizeof(int), cudaMemcpyDeviceToHost);
@@ -213,7 +231,7 @@ std::vector<Position> Board::get_valid_moves()
     cudaMemcpy(host_valid_moves, device_valid_moves, valid_moves_count * sizeof(Position), cudaMemcpyDeviceToHost);
 
     // Free device memory
-    clear_space();
+    // clear_space();
     cudaFree(device_valid_moves);
     cudaFree(device_valid_moves_count);
 
