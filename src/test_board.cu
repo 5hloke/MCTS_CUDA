@@ -1,7 +1,8 @@
-#include "board.h"
+#include "./../include/board.h"
 
-int main(){
-    Board b1; 
+int main()
+{
+    Board b1;
     b1.move_to_gpu();
     Token winner = b1.get_winner();
     std::cout << "Winner is: " << winner << std::endl;
@@ -13,10 +14,9 @@ int main(){
     b1.make_move(0, 5, Token::WHITE);
     b1.make_move(5, 10, Token::BLACK);
     b1.make_move(0, 9, Token::WHITE);
-    winner = b1.get_winneer();
-    std::cout << "Winner is: " << winner << std::endl;
-    b1.make_move(5, 11, Token::BLACK); 
     winner = b1.get_winner();
     std::cout << "Winner is: " << winner << std::endl;
-
+    b1.make_move(5, 11, Token::BLACK);
+    winner = b1.get_winner();
+    std::cout << "Winner is: " << winner << std::endl;
 }
