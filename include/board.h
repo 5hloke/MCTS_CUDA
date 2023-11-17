@@ -22,7 +22,7 @@ public:
     static const int WINNING_LENGTH = 5;
 
     Board();
-    Board(const Board &other) = default;
+    // Board(const Board &other) = default;
     bool valid_move(int row, int col) const;
 
     bool make_move(int row, int col, Token player);
