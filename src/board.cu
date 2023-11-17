@@ -61,7 +61,7 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
         }
     }
     // Check for winne
-    int up= 1, down=1, left=1, right=1, d1=1, d2=1, d3=1, d4 = 1;
+    int up = 1, down = 1, left = 1, right = 1, d1 = 1, d2 = 1, d3 = 1, d4 = 1;
     for (int k = 0; k < n_len; k++)
     {
         if (vertical_up[k] != player && up != 0)
@@ -99,30 +99,29 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
     }
     if (up == 1 || down == 1 || left == 1 || right == 1 || d1 == 1 || d2 == 1 || d3 == 1 || d4 == 1)
     {
-	printf("here");
-	printf("Winner Winner %d \n", player);
+        printf("here");
+        printf("Winner Winner %d \n", player);
         *winner = player;
-	printf("lets see %d", *winner);
+        printf("lets see %d", *winner);
         return;
     }
 }
 
 __global__ void valid_moves_kernel(Token *device_board,
                                    int board_size,
-                                   int winning_length,
                                    Position *valid_moves,
                                    int *valid_moves_count)
 {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     int j = blockIdx.y * blockDim.y + threadIdx.y;
-    if (i > board_size || j > board_size)
+    if (i >= board_size || j >= board_size)
     {
         return;
     }
 
     if (device_board[i * board_size + j] == Token::EMPTY)
     {
-
+        // printf("I is %d and J is %d\n", i, j);
         int index = atomicAdd(valid_moves_count, 1);
         Position pos = {i, j};
         valid_moves[index] = pos;
@@ -236,11 +235,12 @@ std::vector<Position> Board::get_valid_moves()
 
     dim3 block(8, 8);
     dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
-    valid_moves_kernel<<<grid, block>>>(d_board, board_size, WINNING_LENGTH, device_valid_moves, device_valid_moves_count);
+    valid_moves_kernel<<<grid, block>>>(d_board, board_size, device_valid_moves, device_valid_moves_count);
 
     // Copy the result back to the host
     cudaMemcpy(&valid_moves_count, device_valid_moves_count, sizeof(int), cudaMemcpyDeviceToHost);
     Position *host_valid_moves = new Position[valid_moves_count];
+    std::cout << "Valid moves : " << valid_moves_count << std::endl;
     cudaMemcpy(host_valid_moves, device_valid_moves, valid_moves_count * sizeof(Position), cudaMemcpyDeviceToHost);
 
     // Free device memory
