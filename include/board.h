@@ -1,9 +1,8 @@
 #include <vector>
 // include Cuda libraries
 #include <cuda.h>
-#include <thrust/device_vector.h>
-#include <thrust/host_vector.h>
-
+#include <iomanip>
+#include <iostream>
 struct Position
 {
     int row;
@@ -31,8 +30,10 @@ public:
     void move_to_gpu();
     void clear_space();
 
+    // Returns False if there is no winner
     bool has_winner() const;
 
+    // Returns EMPTY if there is no winner
     Token get_winner() const;
 
     std::vector<Position> get_valid_moves();
