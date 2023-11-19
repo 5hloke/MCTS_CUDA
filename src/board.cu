@@ -11,7 +11,6 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
 
     if (player == Token::EMPTY)
     {
-        *winner = Token::EMPTY;
         return;
     }
     const int n_len = win_len - 1;
@@ -97,13 +96,16 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
             d4 = 0;
         }
     }
-    if (up == 1 || down == 1 || left == 1 || right == 1 || d1 == 1 || d2 == 1 || d3 == 1 || d4 == 1)
+    if ((up == 1 || down == 1 || left == 1 || right == 1 || d1 == 1 || d2 == 1 || d3 == 1 || d4 == 1) && *winner == Token::EMPTY)
     {
         printf("here");
         printf("Winner Winner %d \n", player);
         *winner = player;
         printf("lets see %d", *winner);
         return;
+    }
+    else{
+	    return;
     }
 }
 
@@ -191,19 +193,6 @@ void Board::move_to_cpu()
         }
     }
 }
-
-void print_board()
-{
-    for (int i = 0; i < BOARD_SIZE; ++i)
-    {
-        for (int j = 0; j < BOARD_SIZE; ++j)
-        {
-            std::cout << m_board[i][j];
-        }
-        std::cout << std::endl;
-    }
-}
-
 // CUDA kernel for get_winner needs to be written over here
 /*void Board::clear_space()
 {
@@ -215,9 +204,10 @@ void print_board()
 Token Board::get_winner() const
 {
     Token winner = Token::EMPTY;
+    Token dummy = Token::EMPTY;
     dim3 block(8, 8);
     dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
-    Token *d_winner;
+    Token *d_winner = &dummy;
     cudaMalloc(&d_winner, sizeof(Token));
     check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
     cudaMemcpy(&winner, d_winner, sizeof(Token), cudaMemcpyDeviceToHost);
