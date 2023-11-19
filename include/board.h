@@ -41,6 +41,8 @@ public:
     Token get_Token(int row, int col) const;
     std::vector<std::vector<Token>> get_board() const;
 
+    void print_board();
+
 private:
     // Create a 2D dynamic array of size BOARD_SIZE x BOARD_SIZE
     std::vector<std::vector<Token>> m_board;

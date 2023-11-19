@@ -191,6 +191,19 @@ void Board::move_to_cpu()
         }
     }
 }
+
+void print_board()
+{
+    for (int i = 0; i < BOARD_SIZE; ++i)
+    {
+        for (int j = 0; j < BOARD_SIZE; ++j)
+        {
+            std::cout << m_board[i][j];
+        }
+        std::cout << std::endl;
+    }
+}
+
 // CUDA kernel for get_winner needs to be written over here
 /*void Board::clear_space()
 {
