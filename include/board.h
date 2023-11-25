@@ -23,6 +23,7 @@ public:
 
     Board();
     // Board(const Board &other) = default;
+    void update_board(Board &other);
     bool valid_move(int row, int col) const;
 
     bool make_move(int row, int col, Token player);

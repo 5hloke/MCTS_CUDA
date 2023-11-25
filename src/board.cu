@@ -101,8 +101,9 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
         *winner = player;
         return;
     }
-    else{
-	    return;
+    else
+    {
+        return;
     }
 }
 
@@ -145,6 +146,15 @@ Board::Board()
 bool Board::valid_move(int row, int col) const
 {
     return row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE && m_board[row][col] == Token::EMPTY;
+}
+
+void update_board(Board &other)
+{
+    m_board = new std::vector<std::vector<Token>>();
+    for (int i = 0; i < other.m_board.size(); i++)
+    {
+        m_board.push(other.m_board[i]);
+    }
 }
 
 bool Board::make_move(int row, int col, Token player)
