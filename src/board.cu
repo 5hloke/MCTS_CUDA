@@ -98,10 +98,7 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
     }
     if ((up == 1 || down == 1 || left == 1 || right == 1 || d1 == 1 || d2 == 1 || d3 == 1 || d4 == 1) && *winner == Token::EMPTY)
     {
-        printf("here");
-        printf("Winner Winner %d \n", player);
         *winner = player;
-        printf("lets see %d", *winner);
         return;
     }
     else{
@@ -211,7 +208,6 @@ Token Board::get_winner() const
     cudaMalloc(&d_winner, sizeof(Token));
     check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
     cudaMemcpy(&winner, d_winner, sizeof(Token), cudaMemcpyDeviceToHost);
-    std::cout << winner << "here" << std::endl;
     cudaFree(d_winner);
     return winner;
 }
@@ -243,7 +239,6 @@ std::vector<Position> Board::get_valid_moves()
     // Copy the result back to the host
     cudaMemcpy(&valid_moves_count, device_valid_moves_count, sizeof(int), cudaMemcpyDeviceToHost);
     Position *host_valid_moves = new Position[valid_moves_count];
-    std::cout << "Valid moves : " << valid_moves_count << std::endl;
     cudaMemcpy(host_valid_moves, device_valid_moves, valid_moves_count * sizeof(Position), cudaMemcpyDeviceToHost);
 
     // Free device memory
