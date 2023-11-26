@@ -254,11 +254,7 @@ std::vector<Position> Board::get_valid_moves()
     // Free device memory
     // clear_space();
     cudaFree(device_valid_moves);
-    cudaFree(device_valid_moves_count);
+    cudaFree(device_valid_moves_count)
 
-    // Convert the result to std::vector
-    std::vector<Position> result(host_valid_moves, host_valid_moves + valid_moves_count);
-    delete[] host_valid_moves;
-
-    return result;
+        return host_valid_moves;
 }
