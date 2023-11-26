@@ -48,6 +48,6 @@ public:
 
 private:
     // Create a 2D dynamic array of size BOARD_SIZE x BOARD_SIZE
-    std::vector<std::vector<Token>> m_board;
+    Token m_board[16][16];
     Token *d_board;
 };

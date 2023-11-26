@@ -132,12 +132,10 @@ Board::Board()
 {
     for (int i = 0; i < BOARD_SIZE; i++)
     {
-        std::vector<Token> row;
         for (int j = 0; j < BOARD_SIZE; j++)
         {
-            row.push_back(Token::EMPTY);
+            m_board[i][j] = Token::EMPTY;
         }
-        m_board.push_back(row);
     }
 }
 
@@ -150,10 +148,12 @@ bool Board::valid_move(int row, int col) const
 
 void update_board(Board &other)
 {
-    m_board = new std::vector<std::vector<Token>>();
     for (int i = 0; i < other.m_board.size(); i++)
     {
-        m_board.push(other.m_board[i]);
+        for (int j = 0; j < other.m_board[i].size(); j++)
+        {
+            m_board[i][j] = other.m_board[i][j];
+        }
     }
 }
 
@@ -166,6 +166,7 @@ bool Board::make_move(int row, int col, Token player)
     m_board[row][col] = player;
     return true;
 }
+
 
 bool Board::has_winner() const
 {
