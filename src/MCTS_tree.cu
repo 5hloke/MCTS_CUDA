@@ -28,29 +28,57 @@ __global__ void simulate(Node *children, long long rate)
         {
             child->expand();
         }
+        // Highly unoptimized - multiple calls to get-valid_moves
         if (child->board.has_winner())
         {
+
             Token won = child->board.get_winner();
             parent = child;
             while (parent != children[i])
             {
                 if (won == Token::Black)
                 {
-                    parent->score--;
+                    parent->score -= 5;
                 }
                 else
                 {
-                    parent->score++;
+                    parent->score += 5;
                 }
                 parent = parent->parent;
             }
             if (won == Token::Black)
             {
-                parent->score--;
+                parent->score -= 5;
             }
             else
             {
-                parent->score++;
+                parent->score += 5;
+            }
+        }
+        else if (child->board.is_draw())
+        {
+            int player = child->player;
+            parent = child;
+            while (parent != children[i])
+            {
+                if (player == 1)
+                {
+                    parent->score -= 2;
+                }
+                else
+                {
+                    parent->score += 2;
+                }
+                parent = parent->parent;
+                player = parent->player;
+            }
+            if (player == 1)
+            {
+                parent->score -= 2;
+            }
+            else
+            {
+                parent->score += 2;
             }
         }
 
