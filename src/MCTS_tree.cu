@@ -1,44 +1,61 @@
 #include "../include/MCTS_tree.h"
 #include <curand_kernel.h>
 
-
-__global__ void simulate(Node* children, long long rate){
+__global__ void simulate(Node *children, long long rate)
+{
     int i = threadIdx.x + blockIdx.x * blockDim.x;
     // int stride = blockDim.x * gridDim.x;
     curandState_t state;
-    Node* parent = children[i];
+    Node *parent = children[i];
     curant_init(587, i, 0, &state);
     long long int start = clock64();
     long long int end = start;
     double elapsedTime = static_cast<double>(end - start) / rate;
-    while(elapseTime < 1000){
-        if (!parent->expanded){
+    while (elapseTime < 1000)
+    {
+        if (!parent->expanded)
+        {
             parent->expand();
         }
         // pick a random number between 0 and 1
         double rand = curand_uniform(&state);
         int chosen = static_cast<int>(rand * parent->num_children());
-        Node* child = parent->children[chosen];
+        Node *child = parent->children[chosen];
         child->visited++;
         child->sims++;
-        
-        if (!child->expanded){
+
+        if (!child->expanded)
+        {
             child->expand();
         }
-        if (child->board.has_winner()){
-            // here backpropagate
+        if (child->board.has_winner())
+        {
+            Token won = child->board.get_winner();
+            parent = child;
+            while (parent != children[i])
+            {
+                if (won == Token::Black)
+                {
+                    parent->score--;
+                }
+                else
+                {
+                    parent->score++;
+                }
+                parent = parent->parent;
+            }
+            if (won == Token::Black)
+            {
+                parent->score--;
+            }
+            else
+            {
+                parent->score++;
+            }
         }
 
-
-
-
         end = clock64();
-
     }
-    
-    
-
-
 }
 MonteCarloTree::MonteCarloTree(Board board, int player, Position move)
 {
@@ -61,7 +78,7 @@ MonteCarloTree::~MonteCarloTree()
 
 // void expand(Node *node)
 // {
-    
+
 // }
 
 void MonteCarloTree::print_tree()
