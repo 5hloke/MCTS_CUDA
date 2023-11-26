@@ -11,10 +11,39 @@ struct Node
     int sims;
     int score;
     Node *parent;
-    vector<Node *> children;
+    Node* children;
+    int num
+    bool expanded = false;
     Board board;
     int player;
     Position move;
+    void expand(){
+        std::vector<Position> moves = parent->board.get_valid_moves();
+        for (auto move : moves)
+        {
+            Node *child = new Node();
+            child->board.update_board(board);
+            if (player == 1)
+            {
+                child->board.make_move(move.row, move.col, 2);
+                child->player = 2;
+            }
+            else
+            {
+                child->board.make_move(move.row, move.col, 1);
+                child->player = 1;
+            }
+            child->parent = node;
+            child->visited = 0;
+            child->sims = 0;
+            child->wins = 0;
+            child->score = 0;
+            child->move = move;
+            child->children = new vector<Node *>();
+            children.push_back(child);
+            expanded = true;
+    }
+    }
 };
 class MonteCarloTree
 {
@@ -24,7 +53,6 @@ private:
 public:
     MonteCarloTree(Board board, int player, Position move);
     void print_tree();
-    void expand(Node *node);
     void print_tree(Node *node, int depth);
     void find_move(int sim); // can possibly be done on the GPU probably
     Node create_node(Node *parent, Board board);

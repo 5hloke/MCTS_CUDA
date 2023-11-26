@@ -1,5 +1,33 @@
 #include "../include/MCTS_tree.h"
+#include <curand_kernel.h>
 
+
+__global__ void simulate(Node* children, long long rate){
+    int i = threadIdx.x + blockIdx.x * blockDim.x;
+    // int stride = blockDim.x * gridDim.x;
+    curandState_t state;
+    Node* parent = children[i];
+    curant_init(587, i, 0, &state);
+    long long int start = clock64();
+    long long int end = start;
+    double elapsedTime = static_cast<double>(end - start) / rate;
+    while(elapseTime < 1000){
+        if (!parent->expanded){
+            parent->expand();
+        }
+        // pick a random number between 0 and 1
+        double rand = curand_uniform(&state);
+
+
+
+        end = clock64();
+
+    }
+    
+    
+
+
+}
 MonteCarloTree::MonteCarloTree(Board board, int player, Position move)
 {
     root = new Node();
@@ -11,7 +39,7 @@ MonteCarloTree::MonteCarloTree(Board board, int player, Position move)
     root->wins = 0;
     root->score = 0;
     root->move = move;
-    this->expand(root);
+    root->expand();
 }
 
 MonteCarloTree::~MonteCarloTree()
@@ -19,33 +47,10 @@ MonteCarloTree::~MonteCarloTree()
     delete root;
 }
 
-void MonteCarloTree::expand(Node *node)
-{
-    std::vector<Position> moves = node->board.get_valid_moves();
-    for (auto move : moves)
-    {
-        Node *child = new Node();
-        child->board.update_board(node->board);
-        if (node->player == 1)
-        {
-            child->board.make_move(move.row, move.col, 2);
-            child->player = 2;
-        }
-        else
-        {
-            child->board.make_move(move.row, move.col, 1);
-            child->player = 1;
-        }
-        child->parent = node;
-        child->visited = 0;
-        child->sims = 0;
-        child->wins = 0;
-        child->score = 0;
-        child->move = move;
-        child->children = new vector<Node *>();
-        node->children.push_back(child);
-    }
-}
+// void expand(Node *node)
+// {
+    
+// }
 
 void MonteCarloTree::print_tree()
 {
