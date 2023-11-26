@@ -17,6 +17,18 @@ __global__ void simulate(Node* children, long long rate){
         }
         // pick a random number between 0 and 1
         double rand = curand_uniform(&state);
+        int chosen = static_cast<int>(rand * parent->num_children());
+        Node* child = parent->children[chosen];
+        child->visited++;
+        child->sims++;
+        
+        if (!child->expanded){
+            child->expand();
+        }
+        if (child->board.has_winner()){
+            // here backpropagate
+        }
+
 
 
 

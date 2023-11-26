@@ -4,6 +4,9 @@
 
 using namespace std;
 
+
+
+// Black win -1, White win 1, Draw 0 -> score
 struct Node
 {
     int visited;
@@ -11,8 +14,8 @@ struct Node
     int sims;
     int score;
     Node *parent;
-    Node* children;
-    int num
+    Node* children = new Node[16*16];
+    int num_children = 0;
     bool expanded = false;
     Board board;
     int player;
@@ -39,8 +42,10 @@ struct Node
             child->wins = 0;
             child->score = 0;
             child->move = move;
-            child->children = new vector<Node *>();
-            children.push_back(child);
+            child->children = new Node[16*16];
+            child->num_children = 0;
+            num_children += 1;
+
             expanded = true;
     }
     }
