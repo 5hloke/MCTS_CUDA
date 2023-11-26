@@ -36,6 +36,8 @@ public:
 
     // Returns EMPTY if there is no winner
     Token get_winner() const;
+    
+    bool is_draw() const;
 
     Position *get_valid_moves(int &num_moves);
 

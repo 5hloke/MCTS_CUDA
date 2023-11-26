@@ -258,3 +258,10 @@ Position *Board::get_valid_moves(int &num_moves)
 
     return host_valid_moves;
 }
+bool Board::is_draw() const
+{
+    int num_moves = 0;
+    Position *valid_moves = get_valid_moves(num_moves);
+    delete[] valid_moves;
+    return num_moves == 0;
+}
