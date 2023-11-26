@@ -227,7 +227,7 @@ Token Board::get_Token(int row, int col) const
     return m_board[row][col];
 }
 
-std::vector<Position> Board::get_valid_moves()
+Position *Board::get_valid_moves(int &num_moves)
 {
     // Copy the board to the device
     int board_size = Board::BOARD_SIZE;
@@ -250,11 +250,11 @@ std::vector<Position> Board::get_valid_moves()
     cudaMemcpy(&valid_moves_count, device_valid_moves_count, sizeof(int), cudaMemcpyDeviceToHost);
     Position *host_valid_moves = new Position[valid_moves_count];
     cudaMemcpy(host_valid_moves, device_valid_moves, valid_moves_count * sizeof(Position), cudaMemcpyDeviceToHost);
-
+    num_moves = valid_moves_count;
     // Free device memory
     // clear_space();
     cudaFree(device_valid_moves);
     cudaFree(device_valid_moves_count);
 
-        return host_valid_moves;
+    return host_valid_moves;
 }

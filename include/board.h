@@ -37,7 +37,7 @@ public:
     // Returns EMPTY if there is no winner
     Token get_winner() const;
 
-    Position *get_valid_moves();
+    Position *get_valid_moves(int &num_moves);
 
     Token get_Token(int row, int col) const;
     std::vector<std::vector<Token>> get_board() const;
