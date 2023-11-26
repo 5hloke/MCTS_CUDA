@@ -71,7 +71,7 @@ public:
     void ~MonteCarloTree();
 
 private:
-    void simulate(Node *node);                 // These can be done on the GPU
+    Position simulate(Node *node);             // These can be done on the GPU
     int backpropagate(Node *node, int winner); // These can be done on the GPU
     void delete_tree(Node *node);
     void print_node(Node *node);

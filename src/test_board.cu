@@ -3,7 +3,7 @@
 int main()
 {
     Board b1;
-    b1.move_to_gpu();
+
     std::vector<Position> moves = b1.get_valid_moves();
     for (int i = 0; i < moves.size(); i++)
     {

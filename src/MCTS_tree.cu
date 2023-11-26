@@ -82,7 +82,7 @@ __global__ void simulate(Node *children, long long rate)
             }
         }
 
-        end = clock64();
+        end += clock64();
     }
 }
 MonteCarloTree::MonteCarloTree(Board board, int player, Position move)
@@ -163,4 +163,14 @@ vector<Node *> MonteCarloTree::get_parent(Node *node)
         }
     }
     return nullptr;
+}
+
+Position MonteCarloTree::simulate(Node *node)
+{
+    node->expand();
+    // CUDA code to malloc new pointer to node->children, then call CUDA function. CUDA malloc all the children nodes as well
+
+    // CUDA code to retrieve values from the pointer
+
+    // Code to select best possibble action. If all equal should we randomize?
 }
