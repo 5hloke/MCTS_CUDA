@@ -1,7 +1,7 @@
 #include "../include/MCTS_tree.h"
 
-
-MonteCarloTreeSearch::MonteCarloTreeSearch(Board board, int player, Position move) {
+MonteCarloTree::MonteCarloTree(Board board, int player, Position move)
+{
     root = new Node();
     root->board = board;
     root->parent = nullptr;
@@ -14,20 +14,25 @@ MonteCarloTreeSearch::MonteCarloTreeSearch(Board board, int player, Position mov
     this->expand(root);
 }
 
-MonteCarloTreeSearch::~MonteCarloTreeSearch() {
+MonteCarloTree::~MonteCarloTree()
+{
     delete root;
 }
 
-void MonteCarloTreeSearch::expand(Node *node) {
+void MonteCarloTree::expand(Node *node)
+{
     std::vector<Position> moves = node->board.get_valid_moves();
-    for (auto move : moves) {
+    for (auto move : moves)
+    {
         Node *child = new Node();
         child->board.update_board(node->board);
-        if (node->player == 1){
+        if (node->player == 1)
+        {
             child->board.make_move(move.row, move.col, 2);
             child->player = 2;
         }
-        else {
+        else
+        {
             child->board.make_move(move.row, move.col, 1);
             child->player = 1;
         }
@@ -37,7 +42,63 @@ void MonteCarloTreeSearch::expand(Node *node) {
         child->wins = 0;
         child->score = 0;
         child->move = move;
+        child->children = new vector<Node *>();
         node->children.push_back(child);
     }
 }
 
+void MonteCarloTree::print_tree()
+{
+    print_node(root);
+}
+
+void MonteCarloTree::print_node(Node *node)
+{
+    std::cout << "Move made - row: " << node->move.row << ", col: " << node->move.col << std::endl;
+    for (auto child : node->children)
+    {
+        print_node(child);
+    }
+}
+
+void MonteCarloTree::print_node(Node *node, int depth)
+{
+    if (depth < 0)
+        return;
+    std::cout << "Move made - row: " << node->move.row << ", col: " << node->move.col << std::endl;
+    for (auto child : node->children)
+    {
+        print_node(child, depth - 1);
+    }
+}
+
+Node *MonteCarloTree::getRoot()
+{
+    return root;
+}
+
+void MonteCarloTree::set_root(Node *node)
+{
+    root = node;
+}
+
+vector<Node *> MonteCarloTree::get_parent(Node *node)
+{
+    std::queue<Node *> q;
+    q.push(root);
+
+    while (!q.empty())
+    {
+        Node *current = q.front();
+        q.pop();
+        for (Node *child : current->children)
+        {
+            if (child == node)
+            {
+                return current;
+            }
+            q.push(child);
+        }
+    }
+    return nullptr;
+}
