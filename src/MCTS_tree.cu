@@ -1,7 +1,8 @@
 #include "../include/MCTS_tree.h"
 #include <curand_kernel.h>
+#include <cuda_runtime.h>
 
-__global__ void simulate(Node *children, long long rate)
+__global__ void simulatekernel(Node *children, long long rate)
 {
     int i = threadIdx.x + blockIdx.x * blockDim.x;
     // int stride = blockDim.x * gridDim.x;
@@ -168,9 +169,32 @@ vector<Node *> MonteCarloTree::get_parent(Node *node)
 Position MonteCarloTree::simulate(Node *node)
 {
     node->expand();
-    // CUDA code to malloc new pointer to node->children, then call CUDA function. CUDA malloc all the children nodes as well
+    Node *childs;
+    cudaMalloc(&childs, 16 * 16 * sizeof(Node));
+    cudaMemcpy(childs, &node->children, 16 * 16 * sizeof(Node), cudaMemcpyHostToDevice);
 
-    // CUDA code to retrieve values from the pointer
+    dim3 block(8, 8);
+    dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
 
+    long long rate;
+
+    cudaError_t cudaStat = cudaDeviceGetAttribute(&rate, cudaDevAttrClockRate, 0);
+
+    simulatekernel << grid, block >> (childs, rate);
+
+    cudaMemcpy(node->children, &childs, 16 * 16 * sizeof(Node), cudaMemcpyHostToDevice);
+    cudaFree(childs);
+    Position move = node->children[0].move;
+    int max_score = node->children[0].score;
+    for (Node *child : children)
+    {
+        if (child->score > max_score)
+        {
+            max_score = child->score;
+            move = child->move;
+        }
+    }
+
+    return move;
     // Code to select best possibble action. If all equal should we randomize?
 }

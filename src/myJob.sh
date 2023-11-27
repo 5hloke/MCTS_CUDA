@@ -13,4 +13,5 @@
 #module load cuda
 #make sure to compile your program using nvcc
 #nvcc -o example1 example1.cu
+#nvcc -arch=sm_70 test_board.cu board.cu -o ./mcts.out
 ./mcts.out > mcts.txt
