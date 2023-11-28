@@ -12,13 +12,13 @@ struct Node
     int sims;
     int score;
     Node *parent;
-    Node *children = new Node[16 * 16];
+    Node *children;
     int num_children = 0;
     bool expanded = false;
     Board board;
     int player;
     Position move;
-    void expand()
+    __host__ __device__ void expand()
     {
         int num_moves = 0;
         Position *moves = parent->board.get_valid_moves(num_moves);
@@ -29,15 +29,15 @@ struct Node
             child->board.update_board(board);
             if (player == 1)
             {
-                child->board.make_move(move.row, move.col, 2);
+                child->board.make_move(move.row, move.col, Token::WHITE);
                 child->player = 2;
             }
             else
             {
-                child->board.make_move(move.row, move.col, 1);
+                child->board.make_move(move.row, move.col, Token::BLACK);
                 child->player = 1;
             }
-            child->parent = node;
+            child->parent = new Node();
             child->visited = 0;
             child->sims = 0;
             child->wins = 0;
@@ -53,10 +53,8 @@ struct Node
 };
 class MonteCarloTree
 {
-private:
-    Node *root;
-
 public:
+    Node *root;
     MonteCarloTree(Board board, int player, Position move);
     void print_tree();
     void print_tree(Node *node, int depth);
@@ -68,12 +66,12 @@ public:
     Node run();
     vector<Node *> get_children(Node *node);
     Node *get_parent(Node *node);
-    void ~MonteCarloTree();
+    ~MonteCarloTree();
 
 private:
     Position simulate(Node *node);             // These can be done on the GPU
     int backpropagate(Node *node, int winner); // These can be done on the GPU
     void delete_tree(Node *node);
-    void print_node(Node *node);
-    void print_node(Node *node, int depth);
-}
+    // void print_node(Node *node);
+    // void print_node(Node *node, int depth);
+};

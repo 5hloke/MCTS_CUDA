@@ -128,7 +128,7 @@ __global__ void valid_moves_kernel(Token *device_board,
     }
 }
 
-Board::Board()
+__host__ __device__ Board::Board()
 {
     for (int i = 0; i < BOARD_SIZE; i++)
     {
@@ -146,7 +146,7 @@ bool Board::valid_move(int row, int col) const
     return row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE && m_board[row][col] == Token::EMPTY;
 }
 
-void update_board(Board &other)
+__host__ __device__ void update_board(Board &other)
 {
     for (int i = 0; i < other.m_board.size(); i++)
     {
@@ -157,7 +157,7 @@ void update_board(Board &other)
     }
 }
 
-bool Board::make_move(int row, int col, Token player)
+__host__ __device__ bool Board::make_move(int row, int col, Token player)
 {
     if (!valid_move(row, col))
     {
@@ -167,8 +167,7 @@ bool Board::make_move(int row, int col, Token player)
     return true;
 }
 
-
-bool Board::has_winner() const
+__host__ __device__ bool Board::has_winner() const
 {
     return get_winner() != Token::EMPTY;
 }
@@ -209,7 +208,7 @@ void Board::move_to_cpu()
 }*/
 
 // If theres no winner returns Token::EMPTY, if there is a winner return the player Token::BLACK/Token::WHITE
-Token Board::get_winner() const
+__host__ __device__ Token Board::get_winner() const
 {
     Token winner = Token::EMPTY;
     Token dummy = Token::EMPTY;
@@ -228,7 +227,7 @@ Token Board::get_Token(int row, int col) const
     return m_board[row][col];
 }
 
-Position *Board::get_valid_moves(int &num_moves)
+__host__ __device__ Position *Board::get_valid_moves(int &num_moves)
 {
     // Copy the board to the device
     int board_size = Board::BOARD_SIZE;
@@ -259,7 +258,8 @@ Position *Board::get_valid_moves(int &num_moves)
 
     return host_valid_moves;
 }
-bool Board::is_draw() const
+
+__host__ __device__ bool Board::is_draw() const
 {
     int num_moves = 0;
     Position *valid_moves = get_valid_moves(num_moves);

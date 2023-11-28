@@ -1,27 +1,29 @@
 #include "../include/MCTS_tree.h"
 #include <curand_kernel.h>
 #include <cuda_runtime.h>
+#include <queue>
 
 __global__ void simulatekernel(Node *children, long long rate)
 {
     int i = threadIdx.x + blockIdx.x * blockDim.x;
     // int stride = blockDim.x * gridDim.x;
     curandState_t state;
-    Node *parent = children[i];
-    curant_init(587, i, 0, &state);
+    Node *parent = &children[i];
+    curand_init(587, i, 0, &state);
     long long int start = clock64();
     long long int end = start;
     double elapsedTime = static_cast<double>(end - start) / rate;
-    while (elapseTime < 1000)
+    while (elapsedTime < 1000)
     {
         if (!parent->expanded)
         {
             parent->expand();
         }
         // pick a random number between 0 and 1
-        double rand = curand_uniform(&state);
-        int chosen = static_cast<int>(rand * parent->num_children());
-        Node *child = parent->children[chosen];
+        double random = curand_uniform(&state);
+
+        int chosen = static_cast<int>(random * parent->num_children);
+        Node *child = &parent->children[chosen];
         child->visited++;
         child->sims++;
 
@@ -35,9 +37,9 @@ __global__ void simulatekernel(Node *children, long long rate)
 
             Token won = child->board.get_winner();
             parent = child;
-            while (parent != children[i])
+            while (parent != &children[i])
             {
-                if (won == Token::Black)
+                if (won == Token::BLACK)
                 {
                     parent->score -= 5;
                 }
@@ -47,7 +49,7 @@ __global__ void simulatekernel(Node *children, long long rate)
                 }
                 parent = parent->parent;
             }
-            if (won == Token::Black)
+            if (won == Token::BLACK)
             {
                 parent->score -= 5;
             }
@@ -60,7 +62,7 @@ __global__ void simulatekernel(Node *children, long long rate)
         {
             int player = child->player;
             parent = child;
-            while (parent != children[i])
+            while (parent != &children[i])
             {
                 if (player == 1)
                 {
@@ -89,6 +91,7 @@ __global__ void simulatekernel(Node *children, long long rate)
 MonteCarloTree::MonteCarloTree(Board board, int player, Position move)
 {
     root = new Node();
+    root->children = new Node[16 * 16];
     root->board = board;
     root->parent = nullptr;
     root->player = player;
@@ -112,15 +115,15 @@ MonteCarloTree::~MonteCarloTree()
 
 void MonteCarloTree::print_tree()
 {
-    print_node(root);
+    // print_node(root);
 }
-
+/*
 void MonteCarloTree::print_node(Node *node)
 {
     std::cout << "Move made - row: " << node->move.row << ", col: " << node->move.col << std::endl;
-    for (auto child : node->children)
+    for (int i = 0; i < sizeof(node->children) / sizeof(node->children[0]); i++)
     {
-        print_node(child);
+        print_node(node->children[i]);
     }
 }
 
@@ -129,24 +132,20 @@ void MonteCarloTree::print_node(Node *node, int depth)
     if (depth < 0)
         return;
     std::cout << "Move made - row: " << node->move.row << ", col: " << node->move.col << std::endl;
-    for (auto child : node->children)
+    for (int i = 0; i < sizeof(node->children) / sizeof(node->children[0]); i++)
     {
-        print_node(child, depth - 1);
+        print_node(node->children[i], depth - 1);
     }
 }
-
-Node *MonteCarloTree::getRoot()
-{
-    return root;
-}
-
+*/
 void MonteCarloTree::set_root(Node *node)
 {
     root = node;
 }
 
-vector<Node *> MonteCarloTree::get_parent(Node *node)
+Node *MonteCarloTree::get_parent(Node *node)
 {
+    /*
     std::queue<Node *> q;
     q.push(root);
 
@@ -163,6 +162,7 @@ vector<Node *> MonteCarloTree::get_parent(Node *node)
             q.push(child);
         }
     }
+    */
     return nullptr;
 }
 
@@ -174,24 +174,25 @@ Position MonteCarloTree::simulate(Node *node)
     cudaMemcpy(childs, &node->children, 16 * 16 * sizeof(Node), cudaMemcpyHostToDevice);
 
     dim3 block(8, 8);
-    dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
+    dim3 grid(16 / block.x + 1, 16 / block.y + 1);
 
-    long long rate;
+    int temp_rate;
 
-    cudaError_t cudaStat = cudaDeviceGetAttribute(&rate, cudaDevAttrClockRate, 0);
+    cudaError_t cudaStat = cudaDeviceGetAttribute(&temp_rate, cudaDevAttrClockRate, 0);
 
-    simulatekernel << grid, block >> (childs, rate);
+    long long rate = (long long)temp_rate;
+    simulatekernel<<<grid, block>>>(childs, rate);
 
     cudaMemcpy(node->children, &childs, 16 * 16 * sizeof(Node), cudaMemcpyHostToDevice);
     cudaFree(childs);
     Position move = node->children[0].move;
     int max_score = node->children[0].score;
-    for (Node *child : children)
+    for (int i = 0; i < sizeof(node->children) / sizeof(node->children[0]); i++)
     {
-        if (child->score > max_score)
+        if (node->children[i].score > max_score)
         {
-            max_score = child->score;
-            move = child->move;
+            max_score = node->children[i].score;
+            move = node->children[i].move;
         }
     }
 
