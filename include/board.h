@@ -39,7 +39,7 @@ public:
     // Returns EMPTY if there is no winner
     __host__ __device__ Token get_winner() const;
 
-    __host__ __device__ bool is_draw() const;
+    __host__ __device__ bool is_draw();
 
     __host__ __device__ Position *get_valid_moves(int &num_moves);
 

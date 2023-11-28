@@ -100,7 +100,7 @@ MonteCarloTree::MonteCarloTree(Board board, int player, Position move)
     root->wins = 0;
     root->score = 0;
     root->move = move;
-    root->expand();
+    // root->expand();
 }
 
 MonteCarloTree::~MonteCarloTree()

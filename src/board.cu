@@ -146,11 +146,11 @@ bool Board::valid_move(int row, int col) const
     return row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE && m_board[row][col] == Token::EMPTY;
 }
 
-__host__ __device__ void update_board(Board &other)
+__host__ __device__ void Board::update_board(Board &other)
 {
-    for (int i = 0; i < other.m_board.size(); i++)
+    for (int i = 0; i < 16; i++)
     {
-        for (int j = 0; j < other.m_board[i].size(); j++)
+        for (int j = 0; j < 16; j++)
         {
             m_board[i][j] = other.m_board[i][j];
         }
@@ -250,16 +250,16 @@ __host__ __device__ Position *Board::get_valid_moves(int &num_moves)
     cudaMemcpy(&valid_moves_count, device_valid_moves_count, sizeof(int), cudaMemcpyDeviceToHost);
     Position *host_valid_moves = new Position[valid_moves_count];
     cudaMemcpy(host_valid_moves, device_valid_moves, valid_moves_count * sizeof(Position), cudaMemcpyDeviceToHost);
-    num_moves = valid_moves_count;
-    // Free device memory
-    // clear_space();
+    // num_moves = valid_moves_count;
+    //  Free device memory
+    //  clear_space();
     cudaFree(device_valid_moves);
     cudaFree(device_valid_moves_count);
 
     return host_valid_moves;
 }
 
-__host__ __device__ bool Board::is_draw() const
+__host__ __device__ bool Board::is_draw()
 {
     int num_moves = 0;
     Position *valid_moves = get_valid_moves(num_moves);
