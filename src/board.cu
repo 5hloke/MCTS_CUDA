@@ -187,6 +187,19 @@ void Board::move_to_gpu()
     cudaMemcpy(d_board, dummy, BOARD_SIZE * BOARD_SIZE * sizeof(Token), cudaMemcpyHostToDevice);
     delete[] dummy;
 }
+
+void Board::print_board()
+{
+    for (int i = 0; i < 16; i++)
+    {
+        for (int j = 0; j < 16; j++)
+        {
+            std::cout << m_board[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
 void Board::move_to_cpu()
 {
     // This function is not required for the assignment

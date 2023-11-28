@@ -9,6 +9,7 @@ int main()
     test_move.col = 0;
 
     MonteCarloTree test_tree = MonteCarloTree(test_board, 1, test_move);
+    test_tree.root->board.print_board();
 
     // test_move = test_tree.simulate(test_tree->root);
     return 0;
