@@ -60,10 +60,12 @@ struct Node
         printf("getting valid moves\n");
         // return;
         Position *moves = board.get_valid_moves_device(num_moves);
+        __syncthreads();
         printf("Got valid moves ? %d \n", num_moves);
-        return;
+        // return;
         for (int i = 0; i < num_moves; i++)
         {
+            printf("Iterating \n");
             Position move = moves[i];
             Node child;
             child.board.update_board(board);

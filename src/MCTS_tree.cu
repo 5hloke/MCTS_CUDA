@@ -38,15 +38,17 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                     // printf("expansion 1: %d \n", i);
                     // }
                     parent->expand_device();
-                    return;
+                    // return;
                     // printf("Here 2?\n");
                     // if (i == 0){
                     // printf("expansion 2 \n");
                     // }
                 }
+                __syncthreads();
                 // pick a random number between 0 and 1
                 double random = curand_uniform(&state);
                 printf("Number of Children: %d, %d \n", parent->num_children, i);
+                return;
                 int chosen = static_cast<int>(random * parent->num_children);
                 if(i==0){
                     printf("Child chosen \n");
