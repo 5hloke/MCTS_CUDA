@@ -1,258 +1,3 @@
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
 expanded 255
 Inside the kernel 255
 
@@ -262,259 +7,261 @@ Hmm: 0, 255
 Simulating: 0 
 getting valid moves
 About to launch the kernel 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Score: 
-Got valid moves ? 0 
-Number of Children: 0, 0 
+Got valid moves ? 254 
+Iterating 0
+Iterating 1
+Iterating 2
+Iterating 3
+Iterating 4
+Iterating 5
+Iterating 6
+Iterating 7
+Iterating 8
+Iterating 9
+Iterating 10
+Iterating 11
+Iterating 12
+Iterating 13
+Iterating 14
+Iterating 15
+Iterating 16
+Iterating 17
+Iterating 18
+Iterating 19
+Iterating 20
+Iterating 21
+Iterating 22
+Iterating 23
+Iterating 24
+Iterating 25
+Iterating 26
+Iterating 27
+Iterating 28
+Iterating 29
+Iterating 30
+Iterating 31
+Iterating 32
+Iterating 33
+Iterating 34
+Iterating 35
+Iterating 36
+Iterating 37
+Iterating 38
+Iterating 39
+Iterating 40
+Iterating 41
+Iterating 42
+Iterating 43
+Iterating 44
+Iterating 45
+Iterating 46
+Iterating 47
+Iterating 48
+Iterating 49
+Iterating 50
+Iterating 51
+Iterating 52
+Iterating 53
+Iterating 54
+Iterating 55
+Iterating 56
+Iterating 57
+Iterating 58
+Iterating 59
+Iterating 60
+Iterating 61
+Iterating 62
+Iterating 63
+Iterating 64
+Iterating 65
+Iterating 66
+Iterating 67
+Iterating 68
+Iterating 69
+Iterating 70
+Iterating 71
+Iterating 72
+Iterating 73
+Iterating 74
+Iterating 75
+Iterating 76
+Iterating 77
+Iterating 78
+Iterating 79
+Iterating 80
+Iterating 81
+Iterating 82
+Iterating 83
+Iterating 84
+Iterating 85
+Iterating 86
+Iterating 87
+Iterating 88
+Iterating 89
+Iterating 90
+Iterating 91
+Iterating 92
+Iterating 93
+Iterating 94
+Iterating 95
+Iterating 96
+Iterating 97
+Iterating 98
+Iterating 99
+Iterating 100
+Iterating 101
+Iterating 102
+Iterating 103
+Iterating 104
+Iterating 105
+Iterating 106
+Iterating 107
+Iterating 108
+Iterating 109
+Iterating 110
+Iterating 111
+Iterating 112
+Iterating 113
+Iterating 114
+Iterating 115
+Iterating 116
+Iterating 117
+Iterating 118
+Iterating 119
+Iterating 120
+Iterating 121
+Iterating 122
+Iterating 123
+Iterating 124
+Iterating 125
+Iterating 126
+Iterating 127
+Iterating 128
+Iterating 129
+Iterating 130
+Iterating 131
+Iterating 132
+Iterating 133
+Iterating 134
+Iterating 135
+Iterating 136
+Iterating 137
+Iterating 138
+Iterating 139
+Iterating 140
+Iterating 141
+Iterating 142
+Iterating 143
+Iterating 144
+Iterating 145
+Iterating 146
+Iterating 147
+Iterating 148
+Iterating 149
+Iterating 150
+Iterating 151
+Iterating 152
+Iterating 153
+Iterating 154
+Iterating 155
+Iterating 156
+Iterating 157
+Iterating 158
+Iterating 159
+Iterating 160
+Iterating 161
+Iterating 162
+Iterating 163
+Iterating 164
+Iterating 165
+Iterating 166
+Iterating 167
+Iterating 168
+Iterating 169
+Iterating 170
+Iterating 171
+Iterating 172
+Iterating 173
+Iterating 174
+Iterating 175
+Iterating 176
+Iterating 177
+Iterating 178
+Iterating 179
+Iterating 180
+Iterating 181
+Iterating 182
+Iterating 183
+Iterating 184
+Iterating 185
+Iterating 186
+Iterating 187
+Iterating 188
+Iterating 189
+Iterating 190
+Iterating 191
+Iterating 192
+Iterating 193
+Iterating 194
+Iterating 195
+Iterating 196
+Iterating 197
+Iterating 198
+Iterating 199
+Iterating 200
+Iterating 201
+Iterating 202
+Iterating 203
+Iterating 204
+Iterating 205
+Iterating 206
+Iterating 207
+Iterating 208
+Iterating 209
+Iterating 210
+Iterating 211
+Iterating 212
+Iterating 213
+Iterating 214
+Iterating 215
+Iterating 216
+Iterating 217
+Iterating 218
+Iterating 219
+Iterating 220
+Iterating 221
+Iterating 222
+Iterating 223
+Iterating 224
+Iterating 225
+Iterating 226
+Iterating 227
+Iterating 228
+Iterating 229
+Iterating 230
+Iterating 231
+Iterating 232
+Iterating 233
+Iterating 234
+Iterating 235
+Iterating 236
+Iterating 237
+Iterating 238
+Iterating 239
+Iterating 240
+Iterating 241
+Iterating 242
+Iterating 243
+Iterating 244
+Iterating 245
+Iterating 246
+Iterating 247
+Iterating 248
+Iterating 249
+Iterating 250
+Iterating 251
+Iterating 252
+Iterating 253
+Number of Children: 254, 0 
+Chosen rand 79
+The chosen one 1, 1

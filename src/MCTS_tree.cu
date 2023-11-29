@@ -54,29 +54,31 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                 int chosen = static_cast<int>(random * parent->num_children);
                 printf("Chosen rand %d\n", chosen);
 
-                if (i == 0)
-                {
-                    printf("Child chosen \n");
-                }
+                // if (i == 0)
+                // {
+                //     printf("Child chosen \n");
+                // }
+                Node child = parent->children[chosen];
+                // return;
+                child.visited++;
+                
+                child.sims++;
+                printf("The chosen one %d, %d", child.visited, child.sims);
                 return;
-                Node *child = &parent->children[chosen];
-                child->visited++;
-                child->sims++;
-
-                if (!child->expanded)
+                if (!child.expanded)
                 {
-                    child->expand_device();
+                    child.expand_device();
                     if (i == 0)
                     {
                         printf("Child expansion \n");
                     }
                 }
                 // Highly unoptimized - multiple calls to get-valid_moves
-                if (child->board.has_winner_device())
+                if (child.board.has_winner_device())
                 {
 
-                    Token won = child->board.get_winner_device();
-                    parent = child;
+                    Token won = child.board.get_winner_device();
+                    parent = &child;
                     while (parent != &children[i])
                     {
                         if (won == Token::BLACK)
@@ -98,10 +100,10 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                         parent->score += 5;
                     }
                 }
-                else if (child->board.is_draw())
+                else if (child.board.is_draw())
                 {
-                    int player = child->player;
-                    parent = child;
+                    int player = child.player;
+                    parent = &child;
                     while (parent != &children[i])
                     {
                         if (player == 1)
