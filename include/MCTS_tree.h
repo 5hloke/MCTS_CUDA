@@ -46,7 +46,7 @@ struct Node
             child.score = 0;
             child.move = move;
             // printf("In expand: %d, %d ", child.move.row, child.move.col);
-            
+
             child.children = new Node[16 * 16];
             child.num_children = 0;
             this->children[num_children] = child;
@@ -55,7 +55,8 @@ struct Node
         }
     }
 
-    __device__ void expand_device(){
+    __device__ void expand_device()
+    {
         int num_moves = 0;
         printf("getting valid moves\n");
         // return;
@@ -63,12 +64,14 @@ struct Node
         __syncthreads();
         printf("Got valid moves ? %d \n", num_moves);
         // return;
+        this->children = new Node[16 * 16];
         for (int i = 0; i < num_moves; i++)
         {
-            printf("Iterating \n");
+            printf("Iterating %d\n", i);
             Position move = moves[i];
             Node child;
             child.board.update_board(board);
+
             if (player == Token::BLACK)
             {
                 child.board.make_move(move.row, move.col, Token::WHITE);
@@ -86,8 +89,6 @@ struct Node
             child.score = 0;
             child.move = move;
             // printf("In expand: %d, %d ", child.move.row, child.move.col);
-            
-            child.children = new Node[16 * 16];
             child.num_children = 0;
             this->children[num_children] = child;
             this->num_children += 1;
@@ -111,7 +112,7 @@ public:
     vector<Node *> get_children(Node *node);
     Node *get_parent(Node *node);
     ~MonteCarloTree();
-    Position simulate(Node *node);             // These can be done on the GPU
+    Position simulate(Node *node); // These can be done on the GPU
 
 private:
     int backpropagate(Node *node, int winner); // These can be done on the GPU

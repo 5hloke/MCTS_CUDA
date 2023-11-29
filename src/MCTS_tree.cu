@@ -12,7 +12,8 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
     // int stride = blockDim.x * gridDim.x;
     // return;
     // printf("%d : i \n", i);
-    if ( i == 0){
+    if (i == 0)
+    {
         curandState_t state;
         Node *parent = &children[i];
         curand_init(587, i, 0, &state);
@@ -21,10 +22,11 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
         double elapsedTime = static_cast<double>(end - start) / rate;
         //  printf("rate: %d \n", rate);
         // if (i == 0){
-            printf("Hmm: %d, %d \n", i, num_children);
+        printf("Hmm: %d, %d \n", i, num_children);
         // }
-        if (i < num_children){
-            
+        if (i < num_children)
+        {
+
             while (elapsedTime < 1000)
             {
                 // printf("Here ?\n");
@@ -48,20 +50,24 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                 // pick a random number between 0 and 1
                 double random = curand_uniform(&state);
                 printf("Number of Children: %d, %d \n", parent->num_children, i);
-                return;
+
                 int chosen = static_cast<int>(random * parent->num_children);
-                if(i==0){
+                printf("Chosen rand %d\n", chosen);
+
+                if (i == 0)
+                {
                     printf("Child chosen \n");
                 }
+                return;
                 Node *child = &parent->children[chosen];
                 child->visited++;
                 child->sims++;
-                
 
                 if (!child->expanded)
                 {
                     child->expand_device();
-                    if(i==0){
+                    if (i == 0)
+                    {
                         printf("Child expansion \n");
                     }
                 }
@@ -121,14 +127,15 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                 printf("Clock\n");
                 end = clock64();
                 elapsedTime = static_cast<double>(end - start) / rate;
-                
             }
         }
-        else{
+        else
+        {
             return;
         }
     }
-    else{
+    else
+    {
         return;
     }
 }
@@ -219,7 +226,7 @@ Position MonteCarloTree::simulate(Node *node)
     std::cout << "expanded " << node->num_children << std::endl;
     Node *childs;
     cudaMalloc(&childs, 16 * 16 * sizeof(Node));
-    // std::cout << "Move: " <<  node->children[(16*14)].move.row << ", " << node->children[(16*14) - 1].move.col <<std::endl; 
+    // std::cout << "Move: " <<  node->children[(16*14)].move.row << ", " << node->children[(16*14) - 1].move.col <<std::endl;
     cudaMemcpy(childs, node->children, 16 * 16 * sizeof(Node), cudaMemcpyHostToDevice);
 
     dim3 block(8, 8);
@@ -233,12 +240,12 @@ Position MonteCarloTree::simulate(Node *node)
 
     std::cout << "Inside the kernel " << node->num_children << std::endl;
     // return node->move;
-    simulatekernel<<<grid, block>>>(childs, rate, node->num_children);//node->num_children);
+    simulatekernel<<<grid, block>>>(childs, rate, node->num_children); // node->num_children);
     // cudaError_t err = cudaGetLastError();
     // std::cout << "Error: " << cudaGetErrorString(err) << std::endl;
     return node->move;
     cudaDeviceSynchronize();
-    std::cout << "Outside the kernel " << std::endl; 
+    std::cout << "Outside the kernel " << std::endl;
 
     cudaMemcpy(node->children, &childs, 16 * 16 * sizeof(Node), cudaMemcpyHostToDevice);
     node->board.move_to_cpu();

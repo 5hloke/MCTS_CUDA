@@ -15,7 +15,7 @@ __global__ void check_winner_kernel(Token *board, Token &winner, int size, int w
     {
         return;
     }
-    const int n_len = win_len-1;
+    const int n_len = win_len - 1;
     Token vertical_up[4] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
     Token vertical_down[4] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
     Token horizontal_left[4] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
@@ -28,37 +28,37 @@ __global__ void check_winner_kernel(Token *board, Token &winner, int size, int w
 
     for (int k = 0; k < n_len; k++)
     {
-        if (i + (k+1) < size)
+        if (i + (k + 1) < size)
         {
-            vertical_up[k] = board[(i + (k+1)) * size + j];
+            vertical_up[k] = board[(i + (k + 1)) * size + j];
         }
-        if (i - (k+1) > 0)
+        if (i - (k + 1) > 0)
         {
-            vertical_down[k] = board[(i - (k+1)) * size + j];
+            vertical_down[k] = board[(i - (k + 1)) * size + j];
         }
-        if (j - (k+1) > 0)
+        if (j - (k + 1) > 0)
         {
-            horizontal_left[k] = board[i * size + (j - (k+1))];
+            horizontal_left[k] = board[i * size + (j - (k + 1))];
         }
-        if (j + (k+1) < size)
+        if (j + (k + 1) < size)
         {
-            horizontal_right[k] = board[i * size + (j + (k+1))];
+            horizontal_right[k] = board[i * size + (j + (k + 1))];
         }
-        if (i + (k+1) < size && j + (k+1) < size)
+        if (i + (k + 1) < size && j + (k + 1) < size)
         {
-            diag1[k] = board[(i + (k+1)) * size + (j + (k+1))];
+            diag1[k] = board[(i + (k + 1)) * size + (j + (k + 1))];
         }
-        if (i - (k+1) > 0 && j - (k+1) > 0)
+        if (i - (k + 1) > 0 && j - (k + 1) > 0)
         {
-            diag2[k] = board[(i - (k+1)) * size + (j - (k+1))];
+            diag2[k] = board[(i - (k + 1)) * size + (j - (k + 1))];
         }
-        if (i - (k+1) > 0 && j + (k+1) < size)
+        if (i - (k + 1) > 0 && j + (k + 1) < size)
         {
-            diag3[k] = board[(i - (k+1)) * size + (j + (k+1))];
+            diag3[k] = board[(i - (k + 1)) * size + (j + (k + 1))];
         }
-        if (i + (k+1) < size && j - (k+1) > 0)
+        if (i + (k + 1) < size && j - (k + 1) > 0)
         {
-            diag4[k] = board[(i + (k+1)) * size + (j - (k+1))];
+            diag4[k] = board[(i + (k + 1)) * size + (j - (k + 1))];
         }
     }
     // Check for winne
@@ -76,7 +76,7 @@ __global__ void check_winner_kernel(Token *board, Token &winner, int size, int w
         }
         if (horizontal_left[k] != player && left != 0)
         {
-            
+
             left = 0;
         }
         if (horizontal_right[k] != player && right != 0)
@@ -103,7 +103,7 @@ __global__ void check_winner_kernel(Token *board, Token &winner, int size, int w
     if ((up == 1 || down == 1 || left == 1 || right == 1 || d1 == 1 || d2 == 1 || d3 == 1 || d4 == 1) && winner == Token::EMPTY)
     {
         winner = player;
-        printf("Winner is (inside kernel): %d %d %d %d %d %d %d\n\n", winner, i , j, up, down, left, right);
+        printf("Winner is (inside kernel): %d %d %d %d %d %d %d\n\n", winner, i, j, up, down, left, right);
         return;
     }
     else
@@ -132,7 +132,7 @@ __global__ void valid_moves_kernel(Token *device_board,
         int index = atomicAdd(valid_moves_count, 1);
         Position pos = {i, j};
         valid_moves[index] = pos;
-        printf("Score: \n");
+        // printf("Score: \n");
         return;
     }
 }
@@ -228,7 +228,6 @@ void Board::move_to_cpu()
         {
             m_board[i][j] = dummy[i * BOARD_SIZE + j];
             // std::cout << "Where is the segmentation ? " << i << ", " << j << std::endl;
-            
         }
     }
     // return;
@@ -242,7 +241,8 @@ void Board::move_to_cpu()
     // This function is not required for the assignment
     cudaFree(d_board);
 }*/
-__host__ __device__ void Board::set_device_board() {
+__host__ __device__ void Board::set_device_board()
+{
     Token *dummy = new Token[BOARD_SIZE * BOARD_SIZE];
     for (int i = 0; i < BOARD_SIZE; i++)
     {
@@ -278,7 +278,8 @@ __host__ Token Board::get_winner_host()
     // move_to_cpu();
     return winner;
 }
-__device__ Token Board::get_winner_device(){
+__device__ Token Board::get_winner_device()
+{
     Token winner = Token::EMPTY;
     Token dummy = Token::EMPTY;
     set_device_board();
@@ -289,7 +290,6 @@ __device__ Token Board::get_winner_device(){
     winner = *d_winner;
     // move_to_cpu();
     return winner;
-
 }
 
 Token Board::get_Token(int row, int col) const
@@ -297,16 +297,17 @@ Token Board::get_Token(int row, int col) const
     return m_board[row][col];
 }
 
-__device__ Position *Board::get_valid_moves_device(int & num_moves){
+__device__ Position *Board::get_valid_moves_device(int &num_moves)
+{
     int board_size = Board::BOARD_SIZE;
     set_device_board();
     // printf("Set device board\n");
     // Allocate memory for valid moves on the device
-    Position *device_valid_moves = new Position[16*16];
+    Position *device_valid_moves = new Position[16 * 16];
 
     // Initialize valid_moves_count on the host and copy to the device
     int valid_moves_count = 0;
-    int* device_valid_moves_count = new int[1];
+    int *device_valid_moves_count = new int[1];
     device_valid_moves_count[0] = valid_moves_count;
     // this->num_valid_moves = 0;
     // printf("Launching Kernel 4\n");
