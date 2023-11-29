@@ -22,11 +22,13 @@ class Board
 public:
     static const int BOARD_SIZE = 16;
     static const int WINNING_LENGTH = 5;
+    int on_gpu = 0;
+    int num_valid_moves = -1;
 
     __host__ __device__ Board();
     // Board(const Board &other) = default;
     __host__ __device__ void update_board(Board &other);
-    bool valid_move(int row, int col) const;
+    __host__ __device__ bool valid_move(int row, int col) const;
 
     __host__ __device__ bool make_move(int row, int col, Token player);
     void move_to_cpu();
@@ -34,14 +36,17 @@ public:
     // void clear_space();
 
     // Returns False if there is no winner
-    __host__ __device__ bool has_winner() const;
+    __host__ bool has_winner_host() const;
+    __device__ bool has_winner_device();
 
     // Returns EMPTY if there is no winner
-    __host__ __device__ Token get_winner() const;
+    __host__ Token get_winner_host() const;
+    __device__ Token get_winner_device();
 
     __host__ __device__ bool is_draw();
 
-    __host__ __device__ Position *get_valid_moves(int &num_moves);
+    __host__ Position *get_valid_moves_host(int &num_moves);
+    __device__ Position *get_valid_moves_device(int & num_moves);
 
     Token get_Token(int row, int col) const;
     std::vector<std::vector<Token>> get_board() const;
@@ -52,6 +57,7 @@ private:
     // Create a 2D dynamic array of size BOARD_SIZE x BOARD_SIZE
     Token m_board[16][16];
     Token *d_board;
+    __host__ __device__ void set_device_board();
 };
 
 #endif // BOARD_H

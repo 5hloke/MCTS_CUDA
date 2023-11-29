@@ -18,10 +18,11 @@ struct Node
     Board board;
     Token player;
     Position move;
-    __host__ __device__ void expand()
+    __host__ void expand_host()
     {
+        // printf("Inside Expand\n");
         int num_moves = 0;
-        Position *moves = board.get_valid_moves(num_moves);
+        Position *moves = board.get_valid_moves_host(num_moves);
         // printf("Running ? %d \n", num_moves);
         for (int i = 0; i < num_moves; i++)
         {
@@ -44,7 +45,44 @@ struct Node
             child.wins = 0;
             child.score = 0;
             child.move = move;
-            printf("In expand: %d, %d ", child.move.row, child.move.col);
+            // printf("In expand: %d, %d ", child.move.row, child.move.col);
+            
+            child.children = new Node[16 * 16];
+            child.num_children = 0;
+            this->children[num_children] = child;
+            this->num_children += 1;
+            this->expanded = true;
+        }
+    }
+
+    __device__ void expand_device(){
+        int num_moves = 0;
+        printf("getting valid moves\n");
+        Position *moves = board.get_valid_moves_device(num_moves);
+        printf("Got valid moves ? %d \n", num_moves);
+        return;
+        for (int i = 0; i < num_moves; i++)
+        {
+            Position move = moves[i];
+            Node child;
+            child.board.update_board(board);
+            if (player == Token::BLACK)
+            {
+                child.board.make_move(move.row, move.col, Token::WHITE);
+                child.player = Token::WHITE;
+            }
+            else
+            {
+                child.board.make_move(move.row, move.col, Token::BLACK);
+                child.player = Token::BLACK;
+            }
+            child.parent = this;
+            child.visited = 0;
+            child.sims = 0;
+            child.wins = 0;
+            child.score = 0;
+            child.move = move;
+            // printf("In expand: %d, %d ", child.move.row, child.move.col);
             
             child.children = new Node[16 * 16];
             child.num_children = 0;

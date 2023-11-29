@@ -125,8 +125,9 @@ __global__ void valid_moves_kernel(Token *device_board,
     if (device_board[i * board_size + j] == Token::EMPTY)
     {
         // printf("I is %d and J is %d\n", i, j);
-        // printf("Hmm updating ?\n");
+        printf("Hmm updating ?\n");
         int index = atomicAdd(valid_moves_count, 1);
+        printf("Number: %d \n", valid_moves_count);
         Position pos = {i, j};
         valid_moves[index] = pos;
         return;
@@ -146,7 +147,7 @@ __host__ __device__ Board::Board()
 
 // Board::Board(const Board &other) : m_board(other.m_board) {} // this copy constructor is not correct
 
-bool Board::valid_move(int row, int col) const
+__host__ __device__ bool Board::valid_move(int row, int col) const
 {
     return row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE && m_board[row][col] == Token::EMPTY;
 }
@@ -172,9 +173,14 @@ __host__ __device__ bool Board::make_move(int row, int col, Token player)
     return true;
 }
 
-__host__ __device__ bool Board::has_winner() const
+__device__ bool Board::has_winner_device()
 {
-    return get_winner() != Token::EMPTY;
+    return get_winner_device() != Token::EMPTY;
+}
+
+__host__ bool Board::has_winner_host() const
+{
+    return get_winner_host() != Token::EMPTY;
 }
 
 void Board::move_to_gpu()
@@ -190,6 +196,7 @@ void Board::move_to_gpu()
     }
     cudaMalloc(&d_board, BOARD_SIZE * BOARD_SIZE * sizeof(Token)); // TODO :: Create a new variable for GPU . Do not use m_board. This has to be passed into the kernel
     cudaMemcpy(d_board, dummy, BOARD_SIZE * BOARD_SIZE * sizeof(Token), cudaMemcpyHostToDevice);
+    on_gpu = 1;
     delete[] dummy;
 }
 
@@ -218,6 +225,7 @@ void Board::move_to_cpu()
         }
     }
     delete[] dummy;
+    on_gpu = 0;
     cudaFree(d_board);
 }
 // CUDA kernel for get_winner needs to be written over here
@@ -226,9 +234,23 @@ void Board::move_to_cpu()
     // This function is not required for the assignment
     cudaFree(d_board);
 }*/
-
+__host__ __device__ void Board::set_device_board() {
+    Token *dummy = new Token[BOARD_SIZE * BOARD_SIZE];
+    for (int i = 0; i < BOARD_SIZE; i++)
+    {
+        for (int j = 0; j < BOARD_SIZE; j++)
+        {
+            // printf("Hmm checking \n")
+            dummy[i * BOARD_SIZE + j] = m_board[i][j];
+            // printf("Where is the error man \n");
+        }
+    }
+    d_board = dummy;
+    printf("Where is the error man \n");
+    delete [] dummy;
+}
 // If theres no winner returns Token::EMPTY, if there is a winner return the player Token::BLACK/Token::WHITE
-__host__ __device__ Token Board::get_winner() const
+__host__ Token Board::get_winner_host() const
 {
     // move_to_gpu();
     Token winner = Token::EMPTY;
@@ -243,13 +265,52 @@ __host__ __device__ Token Board::get_winner() const
     // move_to_cpu();
     return winner;
 }
+__device__ Token Board::get_winner_device(){
+    Token winner = Token::EMPTY;
+    Token dummy = Token::EMPTY;
+    set_device_board();
+    dim3 block(8, 8);
+    dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
+    Token *d_winner = &dummy;
+    check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
+    winner = *d_winner;
+    // move_to_cpu();
+    return winner;
+
+}
 
 Token Board::get_Token(int row, int col) const
 {
     return m_board[row][col];
 }
 
-__host__ __device__ Position *Board::get_valid_moves(int &num_moves)
+__device__ Position *Board::get_valid_moves_device(int & num_moves){
+    int board_size = Board::BOARD_SIZE;
+    set_device_board();
+    // printf("Set device board\n");
+    // Allocate memory for valid moves on the device
+    Position *device_valid_moves = new Position[16*16];
+
+    // Initialize valid_moves_count on the host and copy to the device
+    int valid_moves_count = 0;
+    int *device_valid_moves_count = &valid_moves_count;
+    // printf("Launching Kernel 4\n");
+    dim3 block(8, 8);
+    dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
+    // move_to_gpu();
+    // printf("About to launch the kernel \n");
+    valid_moves_kernel<<<grid, block>>>(d_board, board_size, device_valid_moves, device_valid_moves_count);
+    // printf("Valid moves: %d\n", valid_moves_count);
+    this->num_valid_moves = *device_valid_moves_count;
+    num_moves = *device_valid_moves_count;
+    // printf("Number of moves: %d \n", num_moves);
+    //  Free device memory
+    //  clear_space();
+    // move_to_cpu();
+
+    return device_valid_moves;
+}
+__host__ Position *Board::get_valid_moves_host(int &num_moves)
 {
     // Copy the board to the device
     int board_size = Board::BOARD_SIZE;
@@ -262,8 +323,9 @@ __host__ __device__ Position *Board::get_valid_moves(int &num_moves)
     int valid_moves_count = 0;
     int *device_valid_moves_count;
     cudaMalloc(&device_valid_moves_count, sizeof(int));
+    // printf("Launching Kernel 3\n");
     cudaMemcpy(device_valid_moves_count, &valid_moves_count, sizeof(int), cudaMemcpyHostToDevice);
-
+    // printf("Launching Kernel 4\n");
     dim3 block(8, 8);
     dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
     // move_to_gpu();
@@ -274,6 +336,7 @@ __host__ __device__ Position *Board::get_valid_moves(int &num_moves)
     Position *host_valid_moves = new Position[valid_moves_count];
     cudaMemcpy(host_valid_moves, device_valid_moves, valid_moves_count * sizeof(Position), cudaMemcpyDeviceToHost);
     // printf("Valid moves: %d\n", valid_moves_count);
+    this->num_valid_moves = valid_moves_count;
     num_moves = valid_moves_count;
     //  Free device memory
     //  clear_space();
@@ -287,7 +350,7 @@ __host__ __device__ Position *Board::get_valid_moves(int &num_moves)
 __host__ __device__ bool Board::is_draw()
 {
     int num_moves = 0;
-    Position *valid_moves = get_valid_moves(num_moves);
-    delete[] valid_moves;
-    return num_moves == 0;
+    // Position *valid_moves = get_valid_moves(num_moves);
+    // delete[] valid_moves;
+    return num_moves == this->num_valid_moves;
 }

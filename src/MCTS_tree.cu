@@ -10,37 +10,42 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
     int j = blockIdx.x * blockDim.x + threadIdx.x;
     i = i * 16 + j;
     // int stride = blockDim.x * gridDim.x;
-    // printf("%d : \n", i);
+    // return;
+    // printf("%d : i \n", i);
     curandState_t state;
     Node *parent = &children[i];
     curand_init(587, i, 0, &state);
     long long int start = clock64();
     long long int end = start;
-    // printf("%d \n", rate);
-    if (i == 0){
-            printf("Hmm: %d \n", i);
-        }
     double elapsedTime = static_cast<double>(end - start) / rate;
+    //  printf("rate: %d \n", rate);
+    // if (i == 0){
+        printf("Hmm: %d, %d \n", i, num_children);
+    // }
+    
     if (i < num_children){
         while (elapsedTime < 1000)
         {
-            if (i == 0){
-                printf("Simulating: %d \n", i);
-            }
+            // printf("Here ?\n");
+            // if (i == 0){
+            printf("Simulating: %d \n", i);
+            // }
             if (!parent->expanded)
             {
-                if (i == 0){
-                    printf("expansion 1 \n");
-                }
+                // printf("Here 1: %d, %d?\n", i, num_children);
+                // if (i == 0){
+                // printf("expansion 1: %d \n", i);
+                // }
 
-                parent->expand();
-                if (i == 0){
-                    printf("expansion 2 \n");
-                }
+                parent->expand_device();
+                // printf("Here 2?\n");
+                // if (i == 0){
+                // printf("expansion 2 \n");
+                // }
             }
             // pick a random number between 0 and 1
             double random = curand_uniform(&state);
-
+            printf("Number of Children: %d, %d \n", parent->num_children, i);
             int chosen = static_cast<int>(random * parent->num_children);
             if(i==0){
                 printf("Child chosen \n");
@@ -52,16 +57,16 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
 
             if (!child->expanded)
             {
-                child->expand();
+                child->expand_device();
                 if(i==0){
                     printf("Child expansion \n");
                 }
             }
             // Highly unoptimized - multiple calls to get-valid_moves
-            if (child->board.has_winner())
+            if (child->board.has_winner_device())
             {
 
-                Token won = child->board.get_winner();
+                Token won = child->board.get_winner_device();
                 parent = child;
                 while (parent != &children[i])
                 {
@@ -203,8 +208,8 @@ Node *MonteCarloTree::get_parent(Node *node)
 Position MonteCarloTree::simulate(Node *node)
 {
     node->board.move_to_gpu();
-    node->expand();
-    std::cout << "expanded" << std::endl;
+    node->expand_host();
+    std::cout << "expanded " << node->num_children << std::endl;
     Node *childs;
     cudaMalloc(&childs, 16 * 16 * sizeof(Node));
     // std::cout << "Move: " <<  node->children[(16*14)].move.row << ", " << node->children[(16*14) - 1].move.col <<std::endl; 
@@ -219,16 +224,18 @@ Position MonteCarloTree::simulate(Node *node)
 
     long long rate = (long long)temp_rate;
 
-    std::cout << "Inside the kernel " << rate << std::endl;
-    simulatekernel<<<grid, block>>>(childs, rate, node->num_children);
-    cudaError_t err = cudaGetLastError();
-    std::cout << "Error: " << cudaGetErrorString(err) << std::endl;
+    std::cout << "Inside the kernel " << node->num_children << std::endl;
+    // return node->move;
+    simulatekernel<<<grid, block>>>(childs, rate, node->num_children);//node->num_children);
+    // cudaError_t err = cudaGetLastError();
+    // std::cout << "Error: " << cudaGetErrorString(err) << std::endl;
     cudaDeviceSynchronize();
-    std::cout << "Outside the kernel " << std::endl;  
+    std::cout << "Outside the kernel " << std::endl; 
 
     cudaMemcpy(node->children, &childs, 16 * 16 * sizeof(Node), cudaMemcpyHostToDevice);
     node->board.move_to_cpu();
     cudaFree(childs);
+    return node->move;
     Position move = node->children[0].move;
     int max_score = node->children[0].score;
     for (int i = 0; i < sizeof(node->children) / sizeof(node->children[0]); i++)

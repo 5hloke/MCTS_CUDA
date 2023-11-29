@@ -1,0 +1,1426 @@
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Not getting valid moves 16, 8
+Not getting valid moves 17, 8
+Not getting valid moves 18, 8
+Not getting valid moves 19, 8
+Not getting valid moves 20, 8
+Not getting valid moves 21, 8
+Not getting valid moves 22, 8
+Not getting valid moves 23, 8
+Not getting valid moves 16, 9
+Not getting valid moves 17, 9
+Not getting valid moves 18, 9
+Not getting valid moves 19, 9
+Not getting valid moves 20, 9
+Not getting valid moves 21, 9
+Not getting valid moves 22, 9
+Not getting valid moves 23, 9
+Not getting valid moves 16, 10
+Not getting valid moves 17, 10
+Not getting valid moves 18, 10
+Not getting valid moves 19, 10
+Not getting valid moves 20, 10
+Not getting valid moves 21, 10
+Not getting valid moves 22, 10
+Not getting valid moves 23, 10
+Not getting valid moves 16, 11
+Not getting valid moves 17, 11
+Not getting valid moves 18, 11
+Not getting valid moves 19, 11
+Not getting valid moves 20, 11
+Not getting valid moves 21, 11
+Not getting valid moves 22, 11
+Not getting valid moves 23, 11
+Not getting valid moves 16, 12
+Not getting valid moves 17, 12
+Not getting valid moves 18, 12
+Not getting valid moves 19, 12
+Not getting valid moves 20, 12
+Not getting valid moves 21, 12
+Not getting valid moves 22, 12
+Not getting valid moves 23, 12
+Not getting valid moves 16, 13
+Not getting valid moves 17, 13
+Not getting valid moves 18, 13
+Not getting valid moves 19, 13
+Not getting valid moves 20, 13
+Not getting valid moves 21, 13
+Not getting valid moves 22, 13
+Not getting valid moves 23, 13
+Not getting valid moves 16, 14
+Not getting valid moves 17, 14
+Not getting valid moves 18, 14
+Not getting valid moves 19, 14
+Not getting valid moves 20, 14
+Not getting valid moves 21, 14
+Not getting valid moves 22, 14
+Not getting valid moves 23, 14
+Not getting valid moves 16, 15
+Not getting valid moves 17, 15
+Not getting valid moves 18, 15
+Not getting valid moves 19, 15
+Not getting valid moves 20, 15
+Not getting valid moves 21, 15
+Not getting valid moves 22, 15
+Not getting valid moves 23, 15
+Not getting valid moves 16, 16
+Not getting valid moves 17, 16
+Not getting valid moves 18, 16
+Not getting valid moves 19, 16
+Not getting valid moves 20, 16
+Not getting valid moves 21, 16
+Not getting valid moves 22, 16
+Not getting valid moves 23, 16
+Not getting valid moves 16, 17
+Not getting valid moves 17, 17
+Not getting valid moves 18, 17
+Not getting valid moves 19, 17
+Not getting valid moves 20, 17
+Not getting valid moves 21, 17
+Not getting valid moves 22, 17
+Not getting valid moves 23, 17
+Not getting valid moves 16, 18
+Not getting valid moves 17, 18
+Not getting valid moves 18, 18
+Not getting valid moves 19, 18
+Not getting valid moves 20, 18
+Not getting valid moves 21, 18
+Not getting valid moves 22, 18
+Not getting valid moves 23, 18
+Not getting valid moves 16, 19
+Not getting valid moves 17, 19
+Not getting valid moves 18, 19
+Not getting valid moves 19, 19
+Not getting valid moves 20, 19
+Not getting valid moves 21, 19
+Not getting valid moves 22, 19
+Not getting valid moves 23, 19
+Not getting valid moves 16, 4
+Not getting valid moves 17, 4
+Not getting valid moves 18, 4
+Not getting valid moves 19, 4
+Not getting valid moves 20, 4
+Not getting valid moves 21, 4
+Not getting valid moves 22, 4
+Not getting valid moves 23, 4
+Not getting valid moves 16, 5
+Not getting valid moves 17, 5
+Not getting valid moves 18, 5
+Not getting valid moves 19, 5
+Not getting valid moves 20, 5
+Not getting valid moves 21, 5
+Not getting valid moves 22, 5
+Not getting valid moves 23, 5
+Not getting valid moves 16, 6
+Not getting valid moves 17, 6
+Not getting valid moves 18, 6
+Not getting valid moves 19, 6
+Not getting valid moves 20, 6
+Not getting valid moves 21, 6
+Not getting valid moves 22, 6
+Not getting valid moves 23, 6
+Not getting valid moves 16, 7
+Not getting valid moves 17, 7
+Not getting valid moves 18, 7
+Not getting valid moves 19, 7
+Not getting valid moves 20, 7
+Not getting valid moves 21, 7
+Not getting valid moves 22, 7
+Not getting valid moves 23, 7
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Not getting valid moves 16, 0
+Not getting valid moves 17, 0
+Not getting valid moves 18, 0
+Not getting valid moves 19, 0
+Not getting valid moves 20, 0
+Not getting valid moves 21, 0
+Not getting valid moves 22, 0
+Not getting valid moves 23, 0
+Not getting valid moves 16, 1
+Not getting valid moves 17, 1
+Not getting valid moves 18, 1
+Not getting valid moves 19, 1
+Not getting valid moves 20, 1
+Not getting valid moves 21, 1
+Not getting valid moves 22, 1
+Not getting valid moves 23, 1
+Not getting valid moves 16, 2
+Not getting valid moves 17, 2
+Not getting valid moves 18, 2
+Not getting valid moves 19, 2
+Not getting valid moves 20, 2
+Not getting valid moves 21, 2
+Not getting valid moves 22, 2
+Not getting valid moves 23, 2
+Not getting valid moves 16, 3
+Not getting valid moves 17, 3
+Not getting valid moves 18, 3
+Not getting valid moves 19, 3
+Not getting valid moves 20, 3
+Not getting valid moves 21, 3
+Not getting valid moves 22, 3
+Not getting valid moves 23, 3
+Not getting valid moves 16, 20
+Not getting valid moves 17, 20
+Not getting valid moves 18, 20
+Not getting valid moves 19, 20
+Not getting valid moves 20, 20
+Not getting valid moves 21, 20
+Not getting valid moves 22, 20
+Not getting valid moves 23, 20
+Not getting valid moves 16, 21
+Not getting valid moves 17, 21
+Not getting valid moves 18, 21
+Not getting valid moves 19, 21
+Not getting valid moves 20, 21
+Not getting valid moves 21, 21
+Not getting valid moves 22, 21
+Not getting valid moves 23, 21
+Not getting valid moves 16, 22
+Not getting valid moves 17, 22
+Not getting valid moves 18, 22
+Not getting valid moves 19, 22
+Not getting valid moves 20, 22
+Not getting valid moves 21, 22
+Not getting valid moves 22, 22
+Not getting valid moves 23, 22
+Not getting valid moves 16, 23
+Not getting valid moves 17, 23
+Not getting valid moves 18, 23
+Not getting valid moves 19, 23
+Not getting valid moves 20, 23
+Not getting valid moves 21, 23
+Not getting valid moves 22, 23
+Not getting valid moves 23, 23
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Not getting valid moves 8, 16
+Not getting valid moves 9, 16
+Not getting valid moves 10, 16
+Not getting valid moves 11, 16
+Not getting valid moves 12, 16
+Not getting valid moves 13, 16
+Not getting valid moves 14, 16
+Not getting valid moves 15, 16
+Not getting valid moves 8, 17
+Not getting valid moves 9, 17
+Not getting valid moves 10, 17
+Not getting valid moves 11, 17
+Not getting valid moves 12, 17
+Not getting valid moves 13, 17
+Not getting valid moves 14, 17
+Not getting valid moves 15, 17
+Not getting valid moves 8, 18
+Not getting valid moves 9, 18
+Not getting valid moves 10, 18
+Not getting valid moves 11, 18
+Not getting valid moves 12, 18
+Not getting valid moves 13, 18
+Not getting valid moves 14, 18
+Not getting valid moves 15, 18
+Not getting valid moves 8, 19
+Not getting valid moves 9, 19
+Not getting valid moves 10, 19
+Not getting valid moves 11, 19
+Not getting valid moves 12, 19
+Not getting valid moves 13, 19
+Not getting valid moves 14, 19
+Not getting valid moves 15, 19
+Not getting valid moves 0, 20
+Not getting valid moves 1, 20
+Not getting valid moves 2, 20
+Not getting valid moves 3, 20
+Not getting valid moves 4, 20
+Not getting valid moves 5, 20
+Not getting valid moves 6, 20
+Not getting valid moves 7, 20
+Not getting valid moves 0, 21
+Not getting valid moves 1, 21
+Not getting valid moves 2, 21
+Not getting valid moves 3, 21
+Not getting valid moves 4, 21
+Not getting valid moves 5, 21
+Not getting valid moves 6, 21
+Not getting valid moves 7, 21
+Not getting valid moves 0, 22
+Not getting valid moves 1, 22
+Not getting valid moves 2, 22
+Not getting valid moves 3, 22
+Not getting valid moves 4, 22
+Not getting valid moves 5, 22
+Not getting valid moves 6, 22
+Not getting valid moves 7, 22
+Not getting valid moves 0, 23
+Not getting valid moves 1, 23
+Not getting valid moves 2, 23
+Not getting valid moves 3, 23
+Not getting valid moves 4, 23
+Not getting valid moves 5, 23
+Not getting valid moves 6, 23
+Not getting valid moves 7, 23
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Board position value: 0 
+Not getting valid moves 8, 20
+Not getting valid moves 9, 20
+Not getting valid moves 10, 20
+Not getting valid moves 11, 20
+Not getting valid moves 12, 20
+Not getting valid moves 13, 20
+Not getting valid moves 14, 20
+Not getting valid moves 15, 20
+Not getting valid moves 8, 21
+Not getting valid moves 9, 21
+Not getting valid moves 10, 21
+Not getting valid moves 11, 21
+Not getting valid moves 12, 21
+Not getting valid moves 13, 21
+Not getting valid moves 14, 21
+Not getting valid moves 15, 21
+Not getting valid moves 8, 22
+Not getting valid moves 9, 22
+Not getting valid moves 10, 22
+Not getting valid moves 11, 22
+Not getting valid moves 12, 22
+Not getting valid moves 13, 22
+Not getting valid moves 14, 22
+Not getting valid moves 15, 22
+Not getting valid moves 8, 23
+Not getting valid moves 9, 23
+Not getting valid moves 10, 23
+Not getting valid moves 11, 23
+Not getting valid moves 12, 23
+Not getting valid moves 13, 23
+Not getting valid moves 14, 23
+Not getting valid moves 15, 23
+Not getting valid moves 0, 16
+Not getting valid moves 1, 16
+Not getting valid moves 2, 16
+Not getting valid moves 3, 16
+Not getting valid moves 4, 16
+Not getting valid moves 5, 16
+Not getting valid moves 6, 16
+Not getting valid moves 7, 16
+Not getting valid moves 0, 17
+Not getting valid moves 1, 17
+Not getting valid moves 2, 17
+Not getting valid moves 3, 17
+Not getting valid moves 4, 17
+Not getting valid moves 5, 17
+Not getting valid moves 6, 17
+Not getting valid moves 7, 17
+Not getting valid moves 0, 18
+Not getting valid moves 1, 18
+Not getting valid moves 2, 18
+Not getting valid moves 3, 18
+Not getting valid moves 4, 18
+Not getting valid moves 5, 18
+Not getting valid moves 6, 18
+Not getting valid moves 7, 18
+Not getting valid moves 0, 19
+Not getting valid moves 1, 19
+Not getting valid moves 2, 19
+Not getting valid moves 3, 19
+Not getting valid moves 4, 19
+Not getting valid moves 5, 19
+Not getting valid moves 6, 19
+Not getting valid moves 7, 19
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+Hmm updating ?
+MOVE:8 8;MOVE:9 8;MOVE:10 8;MOVE:11 8;MOVE:12 8;MOVE:13 8;MOVE:14 8;MOVE:15 8;MOVE:8 9;MOVE:9 9;MOVE:10 9;MOVE:11 9;MOVE:12 9;MOVE:13 9;MOVE:14 9;MOVE:15 9;MOVE:8 10;MOVE:9 10;MOVE:10 10;MOVE:11 10;MOVE:12 10;MOVE:13 10;MOVE:14 10;MOVE:15 10;MOVE:8 11;MOVE:9 11;MOVE:10 11;MOVE:11 11;MOVE:12 11;MOVE:13 11;MOVE:14 11;MOVE:15 11;MOVE:0 12;MOVE:1 12;MOVE:2 12;MOVE:3 12;MOVE:4 12;MOVE:5 12;MOVE:6 12;MOVE:7 12;MOVE:0 13;MOVE:1 13;MOVE:2 13;MOVE:3 13;MOVE:4 13;MOVE:5 13;MOVE:6 13;MOVE:7 13;MOVE:0 14;MOVE:1 14;MOVE:2 14;MOVE:3 14;MOVE:4 14;MOVE:5 14;MOVE:6 14;MOVE:7 14;MOVE:0 15;MOVE:1 15;MOVE:2 15;MOVE:3 15;MOVE:4 15;MOVE:5 15;MOVE:6 15;MOVE:7 15;MOVE:8 12;MOVE:9 12;MOVE:10 12;MOVE:11 12;MOVE:12 12;MOVE:13 12;MOVE:14 12;MOVE:15 12;MOVE:8 13;MOVE:9 13;MOVE:10 13;MOVE:11 13;MOVE:12 13;MOVE:13 13;MOVE:14 13;MOVE:15 13;MOVE:8 14;MOVE:9 14;MOVE:10 14;MOVE:11 14;MOVE:12 14;MOVE:13 14;MOVE:14 14;MOVE:15 14;MOVE:8 15;MOVE:9 15;MOVE:10 15;MOVE:11 15;MOVE:12 15;MOVE:13 15;MOVE:14 15;MOVE:15 15;MOVE:0 8;MOVE:1 8;MOVE:2 8;MOVE:3 8;MOVE:4 8;MOVE:5 8;MOVE:6 8;MOVE:7 8;MOVE:0 9;MOVE:1 9;MOVE:2 9;MOVE:3 9;MOVE:4 9;MOVE:5 9;MOVE:6 9;MOVE:7 9;MOVE:0 10;MOVE:1 10;MOVE:2 10;MOVE:3 10;MOVE:4 10;MOVE:5 10;MOVE:6 10;MOVE:7 10;MOVE:0 11;MOVE:1 11;MOVE:2 11;MOVE:3 11;MOVE:4 11;MOVE:5 11;MOVE:6 11;MOVE:7 11;MOVE:0 4;MOVE:1 4;MOVE:2 4;MOVE:3 4;MOVE:4 4;MOVE:5 4;MOVE:6 4;MOVE:7 4;MOVE:0 5;MOVE:1 5;MOVE:2 5;MOVE:3 5;MOVE:4 5;MOVE:5 5;MOVE:6 5;MOVE:7 5;MOVE:0 6;MOVE:1 6;MOVE:2 6;MOVE:3 6;MOVE:4 6;MOVE:5 6;MOVE:6 6;MOVE:7 6;MOVE:0 7;MOVE:1 7;MOVE:2 7;MOVE:3 7;MOVE:4 7;MOVE:5 7;MOVE:6 7;MOVE:7 7;MOVE:8 0;MOVE:9 0;MOVE:10 0;MOVE:11 0;MOVE:12 0;MOVE:13 0;MOVE:14 0;MOVE:15 0;MOVE:8 1;MOVE:9 1;MOVE:10 1;MOVE:11 1;MOVE:12 1;MOVE:13 1;MOVE:14 1;MOVE:15 1;MOVE:8 2;MOVE:9 2;MOVE:10 2;MOVE:11 2;MOVE:12 2;MOVE:13 2;MOVE:14 2;MOVE:15 2;MOVE:8 3;MOVE:9 3;MOVE:10 3;MOVE:11 3;MOVE:12 3;MOVE:13 3;MOVE:14 3;MOVE:15 3;MOVE:0 0;MOVE:1 0;MOVE:2 0;MOVE:3 0;MOVE:4 0;MOVE:5 0;MOVE:6 0;MOVE:7 0;MOVE:0 1;MOVE:1 1;MOVE:2 1;MOVE:3 1;MOVE:4 1;MOVE:5 1;MOVE:6 1;MOVE:7 1;MOVE:0 2;MOVE:1 2;MOVE:2 2;MOVE:3 2;MOVE:4 2;MOVE:5 2;MOVE:6 2;MOVE:7 2;MOVE:0 3;MOVE:1 3;MOVE:2 3;MOVE:3 3;MOVE:4 3;MOVE:5 3;MOVE:6 3;MOVE:7 3;MOVE:8 4;MOVE:9 4;MOVE:10 4;MOVE:11 4;MOVE:12 4;MOVE:13 4;MOVE:14 4;MOVE:15 4;MOVE:8 5;MOVE:9 5;MOVE:10 5;MOVE:11 5;MOVE:12 5;MOVE:13 5;MOVE:14 5;MOVE:15 5;MOVE:8 6;MOVE:9 6;MOVE:10 6;MOVE:11 6;MOVE:12 6;MOVE:13 6;MOVE:14 6;MOVE:15 6;MOVE:8 7;MOVE:9 7;MOVE:10 7;MOVE:11 7;MOVE:12 7;MOVE:13 7;MOVE:14 7;MOVE:15 7;
+2 2 0 0 0 2 0 0 0 2 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 1 1 1 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Winner is: 1
