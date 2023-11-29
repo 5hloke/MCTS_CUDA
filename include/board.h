@@ -36,11 +36,11 @@ public:
     // void clear_space();
 
     // Returns False if there is no winner
-    __host__ bool has_winner_host() const;
+    __host__ bool has_winner_host();
     __device__ bool has_winner_device();
 
     // Returns EMPTY if there is no winner
-    __host__ Token get_winner_host() const;
+    __host__ Token get_winner_host();
     __device__ Token get_winner_device();
 
     __host__ __device__ bool is_draw();
