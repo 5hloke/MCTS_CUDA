@@ -58,6 +58,7 @@ struct Node
     __device__ void expand_device(){
         int num_moves = 0;
         printf("getting valid moves\n");
+        // return;
         Position *moves = board.get_valid_moves_device(num_moves);
         printf("Got valid moves ? %d \n", num_moves);
         return;
