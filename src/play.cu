@@ -1,6 +1,7 @@
 #include "../include/MCTS_tree.h"
 #include "../include/board.h"
 
+/*
 int main()
 {
     Board test_board;
@@ -19,5 +20,36 @@ int main()
     std::cout << std::endl;
     std::cout << std::endl;
     std::cout << test_move.row << ", " << test_move.col << std::endl;
+    return 0;
+}
+*/
+
+__global__ void test_kernel(Node *test)
+{
+    Token winner = test[0].board.get_winner_device();
+    printf("Winner: %d", winner);
+}
+
+int main()
+{
+    Board b1;
+    b1.make_move(5, 7, Token::BLACK);
+    b1.make_move(0, 0, Token::WHITE);
+    b1.make_move(5, 8, Token::BLACK);
+    b1.make_move(0, 1, Token::WHITE);
+    b1.make_move(5, 9, Token::BLACK);
+    b1.make_move(0, 5, Token::WHITE);
+    b1.make_move(5, 10, Token::BLACK);
+    b1.make_move(0, 9, Token::WHITE);
+    b1.make_move(5, 11, Token::BLACK);
+    b1.print_board();
+    Node test;
+    test.board.update_board(b1);
+    Node *d_test;
+    cudaMalloc(&d_test, sizeof(Node));
+    cudaMemcpy(d_test, &test, sizeof(Node), cudaMemcpyHostToDevice);
+    dim3 block(1, 1);
+    dim3 grid(1, 1);
+    test_kernel<<<grid, block>>>(d_test);
     return 0;
 }

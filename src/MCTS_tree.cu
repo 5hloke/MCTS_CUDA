@@ -61,18 +61,10 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                 Node child = parent->children[chosen];
                 // return;
                 child.visited++;
-                
+
                 child.sims++;
                 printf("The chosen one %d, %d", child.visited, child.sims);
-                return;
-                if (!child.expanded)
-                {
-                    child.expand_device();
-                    if (i == 0)
-                    {
-                        printf("Child expansion \n");
-                    }
-                }
+
                 // Highly unoptimized - multiple calls to get-valid_moves
                 if (child.board.has_winner_device())
                 {
@@ -126,6 +118,7 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                         parent->score += 2;
                     }
                 }
+                return;
                 printf("Clock\n");
                 end = clock64();
                 elapsedTime = static_cast<double>(end - start) / rate;

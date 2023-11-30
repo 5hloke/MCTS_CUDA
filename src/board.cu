@@ -285,9 +285,10 @@ __device__ Token Board::get_winner_device()
     set_device_board();
     dim3 block(8, 8);
     dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
-    Token *d_winner = &dummy;
+    Token *d_winner = new Token[1];
+    d_winner[0] = dummy;
     check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
-    winner = *d_winner;
+    winner = d_winner[0];
     // move_to_cpu();
     return winner;
 }
