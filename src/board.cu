@@ -1,11 +1,11 @@
 #include "./../include/board.h"
-__global__ void check_winner_kernel(Token *board, Token &winner, int size, int win_len)
+__global__ void check_winner_kernel(Token *board, Token *winner, int size, int win_len)
 {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     int j = blockIdx.y * blockDim.y + threadIdx.y;
     // return;
     // printf("Checking Winner: %d ", *winner);
-    if (i > size || j > size)
+    if (i >= size || j >= size)
     {
         return;
     }
@@ -32,11 +32,11 @@ __global__ void check_winner_kernel(Token *board, Token &winner, int size, int w
         {
             vertical_up[k] = board[(i + (k + 1)) * size + j];
         }
-        if (i - (k + 1) > 0)
+        if (i - (k + 1) >= 0)
         {
             vertical_down[k] = board[(i - (k + 1)) * size + j];
         }
-        if (j - (k + 1) > 0)
+        if (j - (k + 1) >= 0)
         {
             horizontal_left[k] = board[i * size + (j - (k + 1))];
         }
@@ -48,15 +48,15 @@ __global__ void check_winner_kernel(Token *board, Token &winner, int size, int w
         {
             diag1[k] = board[(i + (k + 1)) * size + (j + (k + 1))];
         }
-        if (i - (k + 1) > 0 && j - (k + 1) > 0)
+        if (i - (k + 1) >= 0 && j - (k + 1) >= 0)
         {
             diag2[k] = board[(i - (k + 1)) * size + (j - (k + 1))];
         }
-        if (i - (k + 1) > 0 && j + (k + 1) < size)
+        if (i - (k + 1) >= 0 && j + (k + 1) < size)
         {
             diag3[k] = board[(i - (k + 1)) * size + (j + (k + 1))];
         }
-        if (i + (k + 1) < size && j - (k + 1) > 0)
+        if (i + (k + 1) < size && j - (k + 1) >= 0)
         {
             diag4[k] = board[(i + (k + 1)) * size + (j - (k + 1))];
         }
@@ -100,10 +100,10 @@ __global__ void check_winner_kernel(Token *board, Token &winner, int size, int w
             d4 = 0;
         }
     }
-    if ((up == 1 || down == 1 || left == 1 || right == 1 || d1 == 1 || d2 == 1 || d3 == 1 || d4 == 1) && winner == Token::EMPTY)
+    if ((up == 1 || down == 1 || left == 1 || right == 1 || d1 == 1 || d2 == 1 || d3 == 1 || d4 == 1) && *winner == Token::EMPTY)
     {
-        winner = player;
-        printf("Winner is (inside kernel): %d %d %d %d %d %d %d\n\n", winner, i, j, up, down, left, right);
+        *winner = player;
+        printf("Winner is (inside kernel): %d %d %d %d %d %d %d\n\n", *winner, i, j, up, down, left, right);
         return;
     }
     else
@@ -265,12 +265,12 @@ __host__ Token Board::get_winner_host()
     Token dummy = Token::EMPTY;
     dim3 block(8, 8);
     dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
-    Token *d_winner;
+    Token *d_winner = &dummy;
 
     cudaMalloc(&d_winner, sizeof(Token));
-    cudaMemcpy(d_winner, &dummy, sizeof(Token), cudaMemcpyHostToDevice);
+    // cudaMemcpy(d_winner, &dummy, sizeof(Token), cudaMemcpyHostToDevice);
 
-    check_winner_kernel<<<grid, block>>>(d_board, *d_winner, BOARD_SIZE, WINNING_LENGTH);
+    check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
     // cudaDeviceSynchronize();
     // std::cout << winner << std::endl;
     cudaMemcpy(&winner, d_winner, sizeof(Token), cudaMemcpyDeviceToHost);
@@ -286,7 +286,7 @@ __device__ Token Board::get_winner_device()
     dim3 block(8, 8);
     dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
     Token *d_winner = &dummy;
-    check_winner_kernel<<<grid, block>>>(d_board, *d_winner, BOARD_SIZE, WINNING_LENGTH);
+    check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
     winner = *d_winner;
     // move_to_cpu();
     return winner;
