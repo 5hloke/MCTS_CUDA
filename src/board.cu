@@ -1,20 +1,23 @@
 #include "./../include/board.h"
-__global__ void check_winner_kernel(Token *board, Token *winner, int size, int win_len)
+__global__ void check_winner_kernel(Token *board, Token *winner, int size, int win_len, int *count)
 {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     int j = blockIdx.y * blockDim.y + threadIdx.y;
     // return;
-    // printf("Checking Winner: %d ", *winner);
+   // printf("Checking Winner: %d ", *winner);
     if (i >= size || j >= size)
     {
         return;
     }
+    //printf("Pos num: %d\n",i*size+j);
     Token player = board[i * size + j];
 
     if (player == Token::EMPTY)
     {
+	atomicAdd(count,1);
         return;
     }
+    printf("i:%d,j:%d\n",i,j);
     const int n_len = win_len - 1;
     Token vertical_up[4] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
     Token vertical_down[4] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
@@ -100,16 +103,20 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
             d4 = 0;
         }
     }
+    
     if ((up == 1 || down == 1 || left == 1 || right == 1 || d1 == 1 || d2 == 1 || d3 == 1 || d4 == 1) && *winner == Token::EMPTY)
     {
         *winner = player;
         printf("Winner is (inside kernel): %d %d %d %d %d %d %d\n\n", *winner, i, j, up, down, left, right);
-        return;
+        atomicAdd(count,1);
+	return;
     }
     else
     {
+	atomicAdd(count,1);
         return;
     }
+    
 }
 
 __global__ void valid_moves_kernel(Token *device_board,
@@ -136,6 +143,7 @@ __global__ void valid_moves_kernel(Token *device_board,
         return;
     }
 }
+
 
 __host__ __device__ Board::Board()
 {
@@ -268,13 +276,16 @@ __host__ Token Board::get_winner_host()
     Token *d_winner = &dummy;
 
     cudaMalloc(&d_winner, sizeof(Token));
+    int *count;
+    cudaMalloc(&count,sizeof(int));
     // cudaMemcpy(d_winner, &dummy, sizeof(Token), cudaMemcpyHostToDevice);
 
-    check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
+    check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH,count);
     // cudaDeviceSynchronize();
     // std::cout << winner << std::endl;
     cudaMemcpy(&winner, d_winner, sizeof(Token), cudaMemcpyDeviceToHost);
     cudaFree(d_winner);
+    cudaFree(count);
     // move_to_cpu();
     return winner;
 }
@@ -283,12 +294,21 @@ __device__ Token Board::get_winner_device()
     Token winner = Token::EMPTY;
     Token dummy = Token::EMPTY;
     set_device_board();
-    dim3 block(8, 8);
+    printf("In get winner\n");
+    dim3 block(8,8);
     dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
     Token *d_winner = new Token[1];
     d_winner[0] = dummy;
-    check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH);
+    int *count= new int[1];
+    count[0]=0;
+    printf("About to start kernel\n");
+    check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH,count);
+    while(count[0]<256){
+	 printf("current count:%d\n",count[0]);//Removing this creates an endless loop for some reason 
+    }
+    printf("count outside: %d\n",count[0]); 
     winner = d_winner[0];
+    printf("Kernel ended, winner is: %d\n",winner);
     // move_to_cpu();
     return winner;
 }
@@ -378,6 +398,7 @@ __host__ Position *Board::get_valid_moves_host(int &num_moves)
 __host__ __device__ bool Board::is_draw()
 {
     int num_moves = 0;
+    printf("I am in draw now\n");
     // Position *valid_moves = get_valid_moves(num_moves);
     // delete[] valid_moves;
     return num_moves == this->num_valid_moves;
