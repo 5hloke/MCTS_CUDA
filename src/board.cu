@@ -17,7 +17,7 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
 	atomicAdd(count,1);
         return;
     }
-    printf("i:%d,j:%d\n",i,j);
+    // printf("i:%d,j:%d\n",i,j);
     const int n_len = win_len - 1;
     Token vertical_up[4] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
     Token vertical_down[4] = {Token::EMPTY, Token::EMPTY, Token::EMPTY, Token::EMPTY};
@@ -212,15 +212,16 @@ void Board::move_to_gpu()
     delete[] dummy;
 }
 
-void Board::print_board()
+__host__ __device__ void Board::print_board()
 {
     for (int i = 0; i < 16; i++)
     {
         for (int j = 0; j < 16; j++)
         {
-            std::cout << m_board[i][j] << " ";
+            printf("%d ",m_board[i][j]);
         }
-        std::cout << std::endl;
+        printf("\n");
+        // std::cout << std::endl;
     }
 }
 
@@ -287,6 +288,7 @@ __host__ Token Board::get_winner_host()
     cudaFree(d_winner);
     cudaFree(count);
     // move_to_cpu();
+    this->winner = winner;
     return winner;
 }
 __device__ Token Board::get_winner_device()
@@ -294,19 +296,22 @@ __device__ Token Board::get_winner_device()
     Token winner = Token::EMPTY;
     Token dummy = Token::EMPTY;
     set_device_board();
-    printf("In get winner\n");
+    // printf("In get winner\n");
     dim3 block(8,8);
     dim3 grid(BOARD_SIZE / block.x + 1, BOARD_SIZE / block.y + 1);
     Token *d_winner = new Token[1];
     d_winner[0] = dummy;
     int *count= new int[1];
     count[0]=0;
-    printf("About to start kernel\n");
+    // printf("About to start kernel\n");
     check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH,count);
+    int dum = 0;
     while(count[0]<256){
-	 printf("current count:%d\n",count[0]);//Removing this creates an endless loop for some reason 
+	    printf("current count:%d \n",count[0]);//Removing this creates an endless loop for some reaso
+        // dum = count[0] + 1;
     }
-    printf("count outside: %d\n",count[0]); 
+    // printf("count outside: %d\n",count[0]); 
+    this->winner = d_winner[0];
     winner = d_winner[0];
     printf("Kernel ended, winner is: %d\n",winner);
     // move_to_cpu();
@@ -398,8 +403,9 @@ __host__ Position *Board::get_valid_moves_host(int &num_moves)
 __host__ __device__ bool Board::is_draw()
 {
     int num_moves = 0;
-    printf("I am in draw now\n");
+    printf("I am in draw now: %d \n", this->num_valid_moves);
     // Position *valid_moves = get_valid_moves(num_moves);
     // delete[] valid_moves;
     return num_moves == this->num_valid_moves;
 }
+

@@ -24,6 +24,7 @@ public:
     static const int WINNING_LENGTH = 5;
     int on_gpu = 0;
     int num_valid_moves = -1;
+    Token winner = Token::EMPTY;
 
     __host__ __device__ Board();
     // Board(const Board &other) = default;
@@ -51,7 +52,7 @@ public:
     Token get_Token(int row, int col) const;
     std::vector<std::vector<Token>> get_board() const;
 
-    void print_board();
+    __host__ __device__ void print_board();
 
 private:
     // Create a 2D dynamic array of size BOARD_SIZE x BOARD_SIZE

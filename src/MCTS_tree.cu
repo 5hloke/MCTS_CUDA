@@ -11,6 +11,8 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
     i = i * 16 + j;
     // int stride = blockDim.x * gridDim.x;
     // return;
+    // Node stack[256];
+    int depth = 0;
     // printf("%d : i \n", i);
     if (i == 0)
     {
@@ -27,49 +29,80 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
         if (i < num_children)
         {
 
-            while (elapsedTime < 1000)
+            while (elapsedTime < 10000)
             {
                 // printf("Here ?\n");
                 // if (i == 0){
                 printf("Simulating: %d \n", i);
                 // }
-                if (!parent->expanded)
-                {
+                // if (!parent->expanded)
+                // {
                     // printf("Here 1: %d, %d?\n", i, num_children);
                     // if (i == 0){
                     // printf("expansion 1: %d \n", i);
                     // }
-                    parent->expand_device();
+                printf("before expansion\n");
+                parent->board.print_board();
+                Position* moves = parent->expand_device();
                     // return;
                     // printf("Here 2?\n");
                     // if (i == 0){
                     // printf("expansion 2 \n");
                     // }
-                }
+                // }
                 __syncthreads();
+                // return;
                 // pick a random number between 0 and 1
                 double random = curand_uniform(&state);
                 printf("Number of Children: %d, %d \n", parent->num_children, i);
 
                 int chosen = static_cast<int>(random * parent->num_children);
-                printf("Chosen rand %d\n", chosen);
+                printf("Chosen rand %d\n\n", chosen);
 
                 // if (i == 0)
                 // {
                 //     printf("Child chosen \n");
                 // }
-                Node child = parent->children[chosen];
+                Position child_move = moves[chosen];
+                delete [] moves;
+                Node child;
+                printf("parent\n");
+                parent->board.print_board();
+                child.board.update_board(parent->board);
+                printf("Child \n");
+                child.board.print_board();
+                if (parent->player == Token::BLACK)
+                {
+                    child.board.make_move(child_move.row, child_move.col, Token::WHITE);
+                    child.player = Token::WHITE;
+                }
+                else
+                {
+                    child.board.make_move(child_move.row, child_move.col, Token::BLACK);
+                    child.player = Token::BLACK;
+                }
+                child.parent = parent;
+                child.visited = 0;
+                child.sims = 0;
+                child.wins = 0;
+                child.score = 0;
+                child.move = child_move;
+            // printf("In expand: %d, %d ", child.move.row, child.move.col);
+                child.num_children = 0;
+                // stack[depth] = child;
+                // depth++;
+                // delete [] parent->children;
                 // return;
                 child.visited++;
 
                 child.sims++;
-                printf("The chosen one %d, %d", child.visited, child.sims);
+                printf("\nThe chosen one %d, %d \n", child.visited, child.sims);
 
                 // Highly unoptimized - multiple calls to get-valid_moves
                 if (child.board.has_winner_device())
                 {
 
-                    Token won = child.board.get_winner_device();
+                    Token won = child.board.winner;
                     parent = &child;
                     while (parent != &children[i])
                     {
@@ -118,8 +151,14 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                         parent->score += 2;
                     }
                 }
-                return;
-                printf("Clock\n");
+                else{
+                    printf("Switching child to: %d, %d \n", child.move.row, child.move.col);
+                    parent = &child;
+                }
+                // return;
+                printf("end_board \n");
+                parent->board.print_board();
+                printf("Clock\n\n\n\n\n");
                 end = clock64();
                 elapsedTime = static_cast<double>(end - start) / rate;
             }

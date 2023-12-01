@@ -13,8 +13,9 @@ struct Node
     int score;
     Node *parent;
     Node *children;
+    // Node *simmed_chldren;
     int num_children = 0;
-    bool expanded = false;
+    // bool expanded = false;
     Board board;
     Token player;
     Position move;
@@ -51,49 +52,51 @@ struct Node
             child.num_children = 0;
             this->children[num_children] = child;
             this->num_children += 1;
-            this->expanded = true;
+            // this->expanded = true;
         }
+        delete [] moves;
     }
 
-    __device__ void expand_device()
+    __device__ Position * expand_device()
     {
         int num_moves = 0;
-        printf("getting valid moves\n");
+        // printf("getting valid moves\n");
         // return;
         Position *moves = board.get_valid_moves_device(num_moves);
         __syncthreads();
-        printf("Got valid moves ? %d \n", num_moves);
-        // return;
-        this->children = new Node[16 * 16];
-        for (int i = 0; i < num_moves; i++)
-        {
-            printf("Iterating %d\n", i);
-            Position move = moves[i];
-            Node child;
-            child.board.update_board(board);
+        // printf("Got valid moves ? %d \n", num_moves);
+        this->num_children = num_moves;
+        return moves;
+        // this->children = new Node[16 * 16];
+        // for (int i = 0; i < num_moves; i++)
+        // {
+        //     // printf("Iterating %d\n", i);
+        //     Position move = moves[i];
+        //     Node child;
+        //     child.board.update_board(board);
 
-            if (player == Token::BLACK)
-            {
-                child.board.make_move(move.row, move.col, Token::WHITE);
-                child.player = Token::WHITE;
-            }
-            else
-            {
-                child.board.make_move(move.row, move.col, Token::BLACK);
-                child.player = Token::BLACK;
-            }
-            child.parent = this;
-            child.visited = 0;
-            child.sims = 0;
-            child.wins = 0;
-            child.score = 0;
-            child.move = move;
-            // printf("In expand: %d, %d ", child.move.row, child.move.col);
-            child.num_children = 0;
-            this->children[num_children] = child;
-            this->num_children += 1;
-            this->expanded = true;
-        }
+        //     if (player == Token::BLACK)
+        //     {
+        //         child.board.make_move(move.row, move.col, Token::WHITE);
+        //         child.player = Token::WHITE;
+        //     }
+        //     else
+        //     {
+        //         child.board.make_move(move.row, move.col, Token::BLACK);
+        //         child.player = Token::BLACK;
+        //     }
+        //     child.parent = this;
+        //     child.visited = 0;
+        //     child.sims = 0;
+        //     child.wins = 0;
+        //     child.score = 0;
+        //     child.move = move;
+        //     // printf("In expand: %d, %d ", child.move.row, child.move.col);
+        //     child.num_children = 0;
+        //     this->children[num_children] = child;
+        //     this->num_children += 1;
+        //     this->expanded = true;
+        // }
     }
 };
 class MonteCarloTree
