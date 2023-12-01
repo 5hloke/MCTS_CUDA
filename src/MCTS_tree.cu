@@ -6,116 +6,126 @@
 __global__ void simulatekernel(Node *children, long long rate, int num_children)
 {
     // printf("indx: %d", threadIdx.x);
-    int i = blockIdx.y * blockDim.y + threadIdx.y;
-    int j = blockIdx.x * blockDim.x + threadIdx.x;
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    int j = blockIdx.y * blockDim.y + threadIdx.y;
     i = i * 16 + j;
     // int stride = blockDim.x * gridDim.x;
     // return;
     // Node stack[256];
     int depth = 0;
     // printf("%d : i \n", i);
-    if (i == 0)
+    // if (i == 0)
+    // {
+    if (i == 0 || i == 2)
     {
         curandState_t state;
-        Node *parent = &children[i];
+    
+        Node *parent = new Node()
+        parent = &children[i];
         curand_init(587, i, 0, &state);
         long long int start = clock64();
         long long int end = start;
         double elapsedTime = static_cast<double>(end - start) / rate;
         //  printf("rate: %d \n", rate);
-        // if (i == 0){
+    
         printf("Hmm: %d, %d \n", i, num_children);
         // }
-        if (i < num_children)
+        __syncthreads();
+    
+
+        while (elapsedTime < 10000)
         {
-
-            while (elapsedTime < 10000)
-            {
-                // printf("Here ?\n");
+            // printf("Here ?\n");
+            // if (i == 0){
+            printf("Simulating: %d \n", i);
+            // __syncthreads();
+            // if(i == 0){
+            //    parent->board.print_board(); 
+            // }
+            // __syncthreads();
+            // if (i == 2){
+            //     parent->board.print_board();
+            // }
+            // }
+            // if (!parent->expanded)
+            // {
+                // printf("Here 1: %d, %d?\n", i, num_children);
                 // if (i == 0){
-                printf("Simulating: %d \n", i);
+                // printf("expansion 1: %d \n", i);
                 // }
-                // if (!parent->expanded)
-                // {
-                    // printf("Here 1: %d, %d?\n", i, num_children);
-                    // if (i == 0){
-                    // printf("expansion 1: %d \n", i);
-                    // }
-                printf("before expansion\n");
-                parent->board.print_board();
-                Position* moves = parent->expand_device();
-                    // return;
-                    // printf("Here 2?\n");
-                    // if (i == 0){
-                    // printf("expansion 2 \n");
-                    // }
-                // }
-                __syncthreads();
+            // printf("before expansion\n");
+            // parent->board.print_board();
+            Position* moves = parent->expand_device(i);
+            // printf("After expansion\n");
+            // parent->board.print_board();
                 // return;
-                // pick a random number between 0 and 1
-                double random = curand_uniform(&state);
-                printf("Number of Children: %d, %d \n", parent->num_children, i);
-
-                int chosen = static_cast<int>(random * parent->num_children);
-                printf("Chosen rand %d\n\n", chosen);
-
-                // if (i == 0)
-                // {
-                //     printf("Child chosen \n");
+                // printf("Here 2?\n");
+                // if (i == 0){
+                // printf("expansion 2 \n");
                 // }
-                Position child_move = moves[chosen];
-                delete [] moves;
-                Node child;
-                printf("parent\n");
-                parent->board.print_board();
-                child.board.update_board(parent->board);
-                printf("Child \n");
-                child.board.print_board();
-                if (parent->player == Token::BLACK)
-                {
-                    child.board.make_move(child_move.row, child_move.col, Token::WHITE);
-                    child.player = Token::WHITE;
-                }
-                else
-                {
-                    child.board.make_move(child_move.row, child_move.col, Token::BLACK);
-                    child.player = Token::BLACK;
-                }
-                child.parent = parent;
-                child.visited = 0;
-                child.sims = 0;
-                child.wins = 0;
-                child.score = 0;
-                child.move = child_move;
-            // printf("In expand: %d, %d ", child.move.row, child.move.col);
-                child.num_children = 0;
-                // stack[depth] = child;
-                // depth++;
-                // delete [] parent->children;
-                // return;
-                child.visited++;
+            // }
+            __syncthreads();
+            // return;
+            // pick a random number between 0 and 1
+            double random = curand_uniform(&state);
+            printf("Number of Children: %d, %d \n", parent->num_children, i);
 
-                child.sims++;
-                printf("\nThe chosen one %d, %d \n", child.visited, child.sims);
+            int chosen = static_cast<int>(random * parent->num_children);
+            printf("Chosen rand %d\n", chosen);
 
-                // Highly unoptimized - multiple calls to get-valid_moves
-                if (child.board.has_winner_device())
+            // if (i == 0)
+            // {
+            //     printf("Child chosen \n");
+            // }
+
+            Position child_move = moves[chosen];
+            // printf("Before deleting \n");
+            // parent->board.print_board();
+            delete [] moves;
+            // printf("After deleeting \n");
+            // parent->board.print_board();
+            Node* child = new Node();
+            // printf("creating New child \n");
+            // parent->board.print_board();
+
+            child->board.update_board(parent->board);
+            // printf("Child \n");
+            // child->board.print_board();
+            if (parent->player == Token::BLACK)
+            {
+                child->board.make_move(child_move.row, child_move.col, Token::WHITE);
+                child->player = Token::WHITE;
+            }
+            else
+            {
+                child->board.make_move(child_move.row, child_move.col, Token::BLACK);
+                child->player = Token::BLACK;
+            }
+            child->parent = parent;
+            child->visited = 0;
+            child->sims = 0;
+            child->wins = 0;
+            child->score = 0;
+            child->move = child_move;
+         // printf("In expand: %d, %d ", child.move.row, child.move.col);
+            child->num_children = 0;
+            // stack[depth] = child;
+            // depth++;
+            // delete [] parent->children;
+            // return;
+            child->visited++;
+
+            child->sims++;
+            printf("The chosen one %d, %d \n", child->visited, child->sims);
+
+            // Highly unoptimized - multiple calls to get-valid_moves
+            if (child->board.has_winner_device())
+            {
+
+                Token won = child->board.winner;
+                parent = child;
+                while (parent != &children[i])
                 {
-
-                    Token won = child.board.winner;
-                    parent = &child;
-                    while (parent != &children[i])
-                    {
-                        if (won == Token::BLACK)
-                        {
-                            parent->score -= 5;
-                        }
-                        else
-                        {
-                            parent->score += 5;
-                        }
-                        parent = parent->parent;
-                    }
                     if (won == Token::BLACK)
                     {
                         parent->score -= 5;
@@ -124,24 +134,23 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                     {
                         parent->score += 5;
                     }
+                    parent = parent->parent;
                 }
-                else if (child.board.is_draw())
+                if (won == Token::BLACK)
                 {
-                    int player = child.player;
-                    parent = &child;
-                    while (parent != &children[i])
-                    {
-                        if (player == 1)
-                        {
-                            parent->score -= 2;
-                        }
-                        else
-                        {
-                            parent->score += 2;
-                        }
-                        parent = parent->parent;
-                        player = parent->player;
-                    }
+                    parent->score -= 5;
+                }
+                else
+                {
+                    parent->score += 5;
+                }
+            }
+            else if (child->board.is_draw())
+            {
+                int player = child->player;
+                parent = child;
+                while (parent != &children[i])
+                {
                     if (player == 1)
                     {
                         parent->score -= 2;
@@ -150,28 +159,42 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                     {
                         parent->score += 2;
                     }
+                    parent = parent->parent;
+                    player = parent->player;
                 }
-                else{
-                    printf("Switching child to: %d, %d \n", child.move.row, child.move.col);
-                    parent = &child;
+                if (player == 1)
+                {
+                    parent->score -= 2;
                 }
-                // return;
-                printf("end_board \n");
-                parent->board.print_board();
-                printf("Clock\n\n\n\n\n");
-                end = clock64();
-                elapsedTime = static_cast<double>(end - start) / rate;
+                else
+                {
+                    parent->score += 2;
+                }
             }
+            else{
+                printf("Switching child to: %d, %d \n", child->move.row, child->move.col);
+                parent = child;
+            }
+            child = nullptr;
+            delete child;
+            // return;
+            // printf("end_board \n");
+            // parent->board.print_board();
+            printf("Clock\n\n\n\n\n");
+            end = clock64();
+            elapsedTime = static_cast<double>(end - start) / rate;
         }
-        else
-        {
-            return;
-        }
+        printf("Outside the while");
     }
     else
     {
         return;
     }
+    // }
+    // else
+    // {
+    //     return;
+    // }
 }
 
 MonteCarloTree::MonteCarloTree(Board board, Token player, Position move)
@@ -277,6 +300,8 @@ Position MonteCarloTree::simulate(Node *node)
     simulatekernel<<<grid, block>>>(childs, rate, node->num_children); // node->num_children);
     // cudaError_t err = cudaGetLastError();
     // std::cout << "Error: " << cudaGetErrorString(err) << std::endl;
+    cudaDeviceSynchronize();
+    std::cout << "Simulation Finished" << std::endl;
     return node->move;
     cudaDeviceSynchronize();
     std::cout << "Outside the kernel " << std::endl;

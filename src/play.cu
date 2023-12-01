@@ -19,7 +19,7 @@ int main()
     test_move = test_tree.simulate(test_tree.root);
     std::cout << std::endl;
     std::cout << std::endl;
-    std::cout << test_move.row << ", " << test_move.col << std::endl;
+    std::cout << "Simulation finished" << std::endl;
     return 0;
 }
 

@@ -57,15 +57,17 @@ struct Node
         delete [] moves;
     }
 
-    __device__ Position * expand_device()
+    __device__ Position * expand_device(int thread)
     {
         int num_moves = 0;
         // printf("getting valid moves\n");
         // return;
+       
         Position *moves = board.get_valid_moves_device(num_moves);
-        __syncthreads();
         // printf("Got valid moves ? %d \n", num_moves);
         this->num_children = num_moves;
+        this->board.num_valid_moves = num_moves;
+        __syncthreads();
         return moves;
         // this->children = new Node[16 * 16];
         // for (int i = 0; i < num_moves; i++)
