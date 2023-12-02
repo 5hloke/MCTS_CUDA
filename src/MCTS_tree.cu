@@ -2,6 +2,28 @@
 #include <curand_kernel.h>
 #include <queue>
 
+// __global__ void valid_moves_kernel_tail()
+// {
+//      // printf("Inside device count: %d, %d, %d, %d, %d, %d\n", blockDim.x, blockIdx.x, threadIdx.x, blockDim.y, blockIdx.y, threadIdx.y);
+//     int i = blockIdx.x * blockDim.x + threadIdx.x;
+//     int j = blockIdx.y * blockDim.y + threadIdx.y;
+// // //     // printf("Board position value: %d \n", device_board[i * board_size + j]);
+// // //     // if (i >= board_size || j >= board_size)
+// // //     // {
+// // //     //     // printf("Not getting valid moves %d, %d\n", i, j);
+// // //     //     return;
+// // //     // }
+// // //     // // printf("Board position value: %d \n", device_board[i * board_size + j]);
+// // //     // if (device_board[i * board_size + j] == Token::EMPTY)
+// // //     // {
+// // //     //     int index = atomicAdd(valid_moves_count, 1);
+// // //     //     Position pos = {i, j};
+// // //     //     valid_moves[index] = pos;
+// // //     //     // printf("Score: \n");
+// // //     //     return;
+// // //     // }
+// // // }
+// }
 __global__ void simulatekernel(Node *children, long long rate, int num_children)
 // __global__ void simulatekernel(long long rate, int num_children)
 {
@@ -26,9 +48,10 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
         // }
         __syncthreads();
     
-
+        if (i < 16){
         while (elapsedTime < 10000)
         {
+            
             // printf("Here ?\n");
             // if (i == 0){
             printf("Simulating: %d \n", i);
@@ -49,8 +72,10 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                 // }
             // printf("before expansion\n");
             // parent->board.print_board();
-            __syncthreads();
+            
             Position* moves = parent->expand_device(i);
+            valid_moves_kernel_tail<<<1, 256, 0, cudaStreamTailLaunch>>>();
+            __syncthreads();
             // cudaThreadSynchronize();
             // printf("After expansion\n");
             // parent->board.print_board();
@@ -62,19 +87,19 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
             // }
             // return;
             // pick a random number between 0 and 1
-            __syncthreads();
             double random = curand_uniform(&state);
             printf("Number of Children: %d, %d \n", parent->num_children, i);
 
             int chosen = static_cast<int>(random * parent->num_children);
             printf("Chosen rand %d\n", chosen);
-
+            
             // if (i == 0)
             // {
             //     printf("Child chosen \n");
             // }
 
             Position child_move = moves[chosen];
+            // return;
             // printf("Before deleting \n");
             // parent->board.print_board();
             delete [] moves;
@@ -85,7 +110,6 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
             // parent->board.print_board();
 
             child->board.update_board(parent->board);
-            __syncthreads();
             if (parent->player == Token::BLACK)
             {
                 child->board.make_move(child_move.row, child_move.col, Token::WHITE);
@@ -113,14 +137,31 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
             printf("The chosen one %d, %d \n", child->visited, child->sims);
 
             // Highly unoptimized - multiple calls to get-valid_moves
-            return;
-            if (child->board.has_winner_device())
-            {
-                // cudaThreadSynchronize();
-                Token won = child->board.winner;
-                parent = child;
-                while (parent != &children[i])
+            // return;
+            __syncthreads();
+            // if (i == 0 || i == 1){
+            //     child->board.print_board();
+            // }
+            // __syncthreads();
+            // return;
+            
+                if (child->board.has_winner_device())
                 {
+                    // cudaThreadSynchronize();
+                    Token won = child->board.winner;
+                    parent = child;
+                    while (parent != &children[i])
+                    {
+                        if (won == Token::BLACK)
+                        {
+                            parent->score -= 5;
+                        }
+                        else
+                        {
+                            parent->score += 5;
+                        }
+                        parent = parent->parent;
+                    }
                     if (won == Token::BLACK)
                     {
                         parent->score -= 5;
@@ -129,23 +170,24 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                     {
                         parent->score += 5;
                     }
-                    parent = parent->parent;
                 }
-                if (won == Token::BLACK)
+                else if (child->board.is_draw())
                 {
-                    parent->score -= 5;
-                }
-                else
-                {
-                    parent->score += 5;
-                }
-            }
-            else if (child->board.is_draw())
-            {
-                int player = child->player;
-                parent = child;
-                while (parent != &children[i])
-                {
+                    int player = child->player;
+                    parent = child;
+                    while (parent != &children[i])
+                    {
+                        if (player == 1)
+                        {
+                            parent->score -= 2;
+                        }
+                        else
+                        {
+                            parent->score += 2;
+                        }
+                        parent = parent->parent;
+                        player = parent->player;
+                    }
                     if (player == 1)
                     {
                         parent->score -= 2;
@@ -154,32 +196,25 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                     {
                         parent->score += 2;
                     }
-                    parent = parent->parent;
-                    player = parent->player;
                 }
-                if (player == 1)
-                {
-                    parent->score -= 2;
+                else{
+                    printf("Switching child to: %d, %d \n", child->move.row, child->move.col);
+                    parent = child;
                 }
-                else
-                {
-                    parent->score += 2;
-                }
+                child = nullptr;
+                delete child;
+                // return;
+                // printf("end_board \n");
+                // parent->board.print_board();
+                printf("Clock\n\n\n\n\n");
+                end = clock64();
+                elapsedTime = static_cast<double>(end - start) / rate;
+                // return;
             }
-            else{
-                printf("Switching child to: %d, %d \n", child->move.row, child->move.col);
-                parent = child;
-            }
-            child = nullptr;
-            delete child;
+            __syncthreads();
             // return;
-            // printf("end_board \n");
-            // parent->board.print_board();
-            printf("Clock\n\n\n\n\n");
-            end = clock64();
-            elapsedTime = static_cast<double>(end - start) / rate;
         }
-        printf("Outside the while");
+        printf("Outside the while \n");
     }
     else
     {

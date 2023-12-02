@@ -1,2 +1,466 @@
 ========= COMPUTE-SANITIZER
-========= ERROR SUMMARY: 0 errors
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (0,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (1,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (2,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (3,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (4,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (5,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (6,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (7,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (8,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (9,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (10,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (11,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (12,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (13,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (14,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2530 in /home/ashlok/MCTS CUDA/src/board.cu:333:Board::get_winner_device()
+=========     by thread (15,0,0) in block (0,0,0)
+=========     Address 0x145e9ea12168 is out of bounds
+=========     and is 73,577 bytes after the nearest allocation at 0x145e9ea00000 of size 512 bytes
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/board.cu:212:Board::has_winner_device() [0x110]
+=========     Device Frame:/home/ashlok/MCTS CUDA/src/MCTS_tree.cu:148:simulatekernel(Node *, long long, int) [0x6520]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc21b]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x683bb]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5494]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x51c5]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x51fe]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5026]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:main [0x5803]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/ashlok/MCTS CUDA/src/./play.out
+========= 
+========= ERROR SUMMARY: 16 errors

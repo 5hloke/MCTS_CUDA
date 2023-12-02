@@ -1,10 +1,11 @@
 #include "./../include/board.h"
 __global__ void check_winner_kernel(Token *board, Token *winner, int size, int win_len, int *count)
 {
+    
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     int j = blockIdx.y * blockDim.y + threadIdx.y;
     // return;
-   // printf("Checking Winner: %d ", *winner);
+//    printf("Checking Winner: %d ", *winner);
     if (i >= size || j >= size)
     {
         return;
@@ -149,22 +150,22 @@ __global__ void valid_moves_kernel_tail()
      // printf("Inside device count: %d, %d, %d, %d, %d, %d\n", blockDim.x, blockIdx.x, threadIdx.x, blockDim.y, blockIdx.y, threadIdx.y);
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     int j = blockIdx.y * blockDim.y + threadIdx.y;
-//     // printf("Board position value: %d \n", device_board[i * board_size + j]);
-//     // if (i >= board_size || j >= board_size)
-//     // {
-//     //     // printf("Not getting valid moves %d, %d\n", i, j);
-//     //     return;
-//     // }
-//     // // printf("Board position value: %d \n", device_board[i * board_size + j]);
-//     // if (device_board[i * board_size + j] == Token::EMPTY)
-//     // {
-//     //     int index = atomicAdd(valid_moves_count, 1);
-//     //     Position pos = {i, j};
-//     //     valid_moves[index] = pos;
-//     //     // printf("Score: \n");
-//     //     return;
-//     // }
-// }
+// //     // printf("Board position value: %d \n", device_board[i * board_size + j]);
+// //     // if (i >= board_size || j >= board_size)
+// //     // {
+// //     //     // printf("Not getting valid moves %d, %d\n", i, j);
+// //     //     return;
+// //     // }
+// //     // // printf("Board position value: %d \n", device_board[i * board_size + j]);
+// //     // if (device_board[i * board_size + j] == Token::EMPTY)
+// //     // {
+// //     //     int index = atomicAdd(valid_moves_count, 1);
+// //     //     Position pos = {i, j};
+// //     //     valid_moves[index] = pos;
+// //     //     // printf("Score: \n");
+// //     //     return;
+// //     // }
+// // }
 }
 
 __host__ __device__ Board::Board()
@@ -325,22 +326,25 @@ __device__ Token Board::get_winner_device()
     d_winner[0] = dummy;
     int *count= new int[1];
     count[0]=0;
-    // printf("About to start kernel\n");
+    __syncthreads();
+    printf("About to start kernel winner: %d %d\n", d_board[0], count[0]);
+    // return Token::EMPTY;
+    __syncthreads();
     check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH,count);
-    int dum = 0;
-    // while(count[0]<256){
-	//     printf("current count:%d \n",count[0]);//Removing this creates an endless loop for some reaso
-    //     // dum = count[0] + 1;
-    // }
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // int dum = 0;
+    while(count[0]<256){
+	    printf("current count:%d \n",count[0]);//Removing this creates an endless loop for some reaso
+        // dum = count[0] + 1;
+    }
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     // printf("count outside: %d\n",count[0]); 
     this->winner = d_winner[0];
     winner = d_winner[0];
@@ -384,17 +388,19 @@ __device__ Position *Board::get_valid_moves_device(int &num_moves)
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
-    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    // valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     // return device_valid_moves;
     // printf("Valid moves: %d\n", valid_moves_count);
     // this->num_valid_moves = *device_valid_moves_count;
     // num_moves = *device_valid_moves_count;
+    __syncthreads();
     num_moves = device_valid_moves_count[0];
+    delete [] device_valid_moves_count;
     // printf("Number of moves: %d \n", num_moves);
     //  Free device memory
     //  clear_space();

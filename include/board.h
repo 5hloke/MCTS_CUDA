@@ -6,6 +6,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+__global__ void valid_moves_kernel_tail();
 struct Position
 {
     int row;
