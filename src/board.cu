@@ -138,12 +138,34 @@ __global__ void valid_moves_kernel(Token *device_board,
     {
         int index = atomicAdd(valid_moves_count, 1);
         Position pos = {i, j};
+        // printf("index %d \n", index);
         valid_moves[index] = pos;
         // printf("Score: \n");
         return;
     }
 }
-
+__global__ void valid_moves_kernel_tail()
+{
+     // printf("Inside device count: %d, %d, %d, %d, %d, %d\n", blockDim.x, blockIdx.x, threadIdx.x, blockDim.y, blockIdx.y, threadIdx.y);
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    int j = blockIdx.y * blockDim.y + threadIdx.y;
+//     // printf("Board position value: %d \n", device_board[i * board_size + j]);
+//     // if (i >= board_size || j >= board_size)
+//     // {
+//     //     // printf("Not getting valid moves %d, %d\n", i, j);
+//     //     return;
+//     // }
+//     // // printf("Board position value: %d \n", device_board[i * board_size + j]);
+//     // if (device_board[i * board_size + j] == Token::EMPTY)
+//     // {
+//     //     int index = atomicAdd(valid_moves_count, 1);
+//     //     Position pos = {i, j};
+//     //     valid_moves[index] = pos;
+//     //     // printf("Score: \n");
+//     //     return;
+//     // }
+// }
+}
 
 __host__ __device__ Board::Board()
 {
@@ -306,10 +328,19 @@ __device__ Token Board::get_winner_device()
     // printf("About to start kernel\n");
     check_winner_kernel<<<grid, block>>>(d_board, d_winner, BOARD_SIZE, WINNING_LENGTH,count);
     int dum = 0;
-    while(count[0]<256){
-	    printf("current count:%d \n",count[0]);//Removing this creates an endless loop for some reaso
-        // dum = count[0] + 1;
-    }
+    // while(count[0]<256){
+	//     printf("current count:%d \n",count[0]);//Removing this creates an endless loop for some reaso
+    //     // dum = count[0] + 1;
+    // }
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     // printf("count outside: %d\n",count[0]); 
     this->winner = d_winner[0];
     winner = d_winner[0];
@@ -322,7 +353,6 @@ Token Board::get_Token(int row, int col) const
 {
     return m_board[row][col];
 }
-
 __device__ Position *Board::get_valid_moves_device(int &num_moves)
 {
     int board_size = Board::BOARD_SIZE;
@@ -351,6 +381,15 @@ __device__ Position *Board::get_valid_moves_device(int &num_moves)
     // }
     printf("About to launch the kernel \n");
     valid_moves_kernel<<<grid, block>>>(d_board, board_size, device_valid_moves, device_valid_moves_count);
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     // return device_valid_moves;
     // printf("Valid moves: %d\n", valid_moves_count);
     // this->num_valid_moves = *device_valid_moves_count;

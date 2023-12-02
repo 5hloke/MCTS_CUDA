@@ -1,6 +1,7 @@
 #include <vector>
 #include <iomanip>
 #include <iostream>
+#include <cuda_runtime.h>
 
 #ifndef BOARD_H
 #define BOARD_H
@@ -24,6 +25,7 @@ public:
     static const int WINNING_LENGTH = 5;
     int on_gpu = 0;
     int num_valid_moves = -1;
+    // __device__ int num_valid_moves_d;
     Token winner = Token::EMPTY;
 
     __host__ __device__ Board();

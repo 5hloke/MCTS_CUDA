@@ -5,6 +5,7 @@
 using namespace std;
 
 // Black win -1, White win 1, Draw 0 -> score
+
 struct Node
 {
     int visited;
@@ -62,6 +63,7 @@ struct Node
         int num_moves = 0;
         // printf("getting valid moves\n");
         // return;
+        // printf("thread %d, %d \n", thread, &board);
        
         Position *moves = board.get_valid_moves_device(num_moves);
         // printf("Got valid moves ? %d \n", num_moves);
@@ -125,3 +127,4 @@ private:
     // void print_node(Node *node);
     // void print_node(Node *node, int depth);
 };
+
