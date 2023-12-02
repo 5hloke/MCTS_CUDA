@@ -5,5 +5,5 @@
 #SBATCH --time=00:05:00
 #SBATCH --account=eecs587f23_class
 #SBATCH --partition=gpu
-
-compute-sanitizer --log-file sanitizer.txt ./play.out > mcts.txt
+./play.out >mcts.txt
+#compute-sanitizer --log-file sanitizer.txt ./play.out > mcts.txt

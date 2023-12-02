@@ -187,9 +187,9 @@ __host__ __device__ bool Board::valid_move(int row, int col) const
 
 __host__ __device__ void Board::update_board(Board &other)
 {
-    for (int i = 0; i < 16; i++)
+    for (int i = 0; i < 8; i++)
     {
-        for (int j = 0; j < 16; j++)
+        for (int j = 0; j < 8; j++)
         {
             m_board[i][j] = other.m_board[i][j];
         }
@@ -236,9 +236,9 @@ void Board::move_to_gpu()
 
 __host__ __device__ void Board::print_board()
 {
-    for (int i = 0; i < 16; i++)
+    for (int i = 0; i < 8; i++)
     {
-        for (int j = 0; j < 16; j++)
+        for (int j = 0; j < 8; j++)
         {
             printf("%d ",m_board[i][j]);
         }
@@ -332,6 +332,7 @@ __device__ Token Board::get_winner_device()
 	//     printf("current count:%d \n",count[0]);//Removing this creates an endless loop for some reaso
     //     // dum = count[0] + 1;
     // }
+    /*
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
@@ -341,6 +342,8 @@ __device__ Token Board::get_winner_device()
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    */
+    cudaDeviceSynchronize();
     // printf("count outside: %d\n",count[0]); 
     this->winner = d_winner[0];
     winner = d_winner[0];
@@ -359,7 +362,7 @@ __device__ Position *Board::get_valid_moves_device(int &num_moves)
     set_device_board();
     // printf("Set device board\n");
     // Allocate memory for valid moves on the device
-    Position *device_valid_moves = new Position[16 * 16];
+    Position *device_valid_moves = new Position[8 * 8];
 
     // Initialize valid_moves_count on the host and copy to the device
     int valid_moves_count = 0;
@@ -381,6 +384,7 @@ __device__ Position *Board::get_valid_moves_device(int &num_moves)
     // }
     printf("About to launch the kernel \n");
     valid_moves_kernel<<<grid, block>>>(d_board, board_size, device_valid_moves, device_valid_moves_count);
+    /*
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
@@ -390,6 +394,11 @@ __device__ Position *Board::get_valid_moves_device(int &num_moves)
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
+    */
+    cudaDeviceSynchronize();
+    //cudaError_t err{cudaGetLastError()};
+    
+    //if (err != cudaSuccess)printf("This is the error: %s\n",cudaGetErrorString(err));
     // return device_valid_moves;
     // printf("Valid moves: %d\n", valid_moves_count);
     // this->num_valid_moves = *device_valid_moves_count;

@@ -49,7 +49,7 @@ struct Node
             child.move = move;
             // printf("In expand: %d, %d ", child.move.row, child.move.col);
 
-            child.children = new Node[16 * 16];
+            child.children = new Node[8 * 8];
             child.num_children = 0;
             this->children[num_children] = child;
             this->num_children += 1;

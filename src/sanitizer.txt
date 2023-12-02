@@ -1,2 +1,995 @@
 ========= COMPUTE-SANITIZER
-========= ERROR SUMMARY: 0 errors
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (224,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (225,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (226,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (227,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (228,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (229,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (230,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (231,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (232,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (233,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (234,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (235,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (236,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (237,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (238,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (239,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (240,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (241,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (242,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (243,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (244,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (245,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (246,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (247,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (248,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (249,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (250,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (251,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (252,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (253,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Invalid __global__ write of size 8 bytes
+=========     at 0x2470 in /home/karanand/587_proj/src/board.cu:383:Board::get_valid_moves_device(int &)
+=========     by thread (254,0,0) in block (0,0,0)
+=========     Address 0x14a18ea12170 is out of bounds
+=========     and is 73,585 bytes after the nearest allocation at 0x14a18ea00000 of size 512 bytes
+=========     Device Frame:/home/karanand/587_proj/include/MCTS_tree.h:68:NTERNAL_fe193526_12_MCTS_tree_cu_8b96fb47_116632120_curand_init_inplaceEyyyP17curandStateXORWOW [0x15e0]
+=========     Device Frame:/home/karanand/587_proj/src/MCTS_tree.cu:52:simulatekernel(Node *, long long, int) [0x1530]
+=========     Saved host backtrace up to driver entry point at kernel launch time
+=========     Host Frame: [0x30b492]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:__cudart800 [0xc2bb]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaLaunchKernel [0x6845b]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:cudaError cudaLaunchKernel<char>(char const*, dim3, dim3, void**, unsigned long, CUstream_st*) [0x5537]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__device_stub__Z14simulatekernelP4Nodexi(Node*, long long, int) [0x5268]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:simulatekernel(Node*, long long, int) [0x52a1]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5027]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Program hit cudaErrorLaunchFailure (error 719) due to "unspecified launch failure" on CUDA API call to cudaDeviceSynchronize.
+=========     Saved host backtrace up to driver entry point at error
+=========     Host Frame: [0x44a116]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:cudaDeviceSynchronize [0x4316a]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5048]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Program hit cudaErrorLaunchFailure (error 719) due to "unspecified launch failure" on CUDA API call to cudaGetLastError.
+=========     Saved host backtrace up to driver entry point at error
+=========     Host Frame: [0x44a116]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:cudaGetLastError [0x45937]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x5069]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Program hit cudaErrorLaunchFailure (error 719) due to "unspecified launch failure" on CUDA API call to cudaMemcpy.
+=========     Saved host backtrace up to driver entry point at error
+=========     Host Frame: [0x44a116]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:cudaMemcpy [0x635e8]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x50c4]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Program hit cudaErrorLaunchFailure (error 719) due to "unspecified launch failure" on CUDA API call to cudaMemcpy.
+=========     Saved host backtrace up to driver entry point at error
+=========     Host Frame: [0x44a116]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:cudaMemcpy [0x635e8]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:Board::move_to_cpu() [0x4145]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x50d4]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Program hit cudaErrorLaunchFailure (error 719) due to "unspecified launch failure" on CUDA API call to cudaFree.
+=========     Saved host backtrace up to driver entry point at error
+=========     Host Frame: [0x44a116]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:cudaFree [0x4e341]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:Board::move_to_cpu() [0x41d6]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x50d4]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= Program hit cudaErrorLaunchFailure (error 719) due to "unspecified launch failure" on CUDA API call to cudaFree.
+=========     Saved host backtrace up to driver entry point at error
+=========     Host Frame: [0x44a116]
+=========                in /lib64/libcuda.so.1
+=========     Host Frame:cudaFree [0x4e341]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:MonteCarloTree::simulate(Node*) [0x50e0]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:main [0x58a5]
+=========                in /home/karanand/587_proj/src/./play.out
+=========     Host Frame:__libc_start_main [0x3acf3]
+=========                in /lib64/libc.so.6
+=========     Host Frame:_start [0x3b1e]
+=========                in /home/karanand/587_proj/src/./play.out
+========= 
+========= ERROR SUMMARY: 37 errors

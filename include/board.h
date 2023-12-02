@@ -21,7 +21,7 @@ enum Token
 class Board
 {
 public:
-    static const int BOARD_SIZE = 16;
+    static const int BOARD_SIZE = 8;
     static const int WINNING_LENGTH = 5;
     int on_gpu = 0;
     int num_valid_moves = -1;
@@ -58,7 +58,7 @@ public:
 
 private:
     // Create a 2D dynamic array of size BOARD_SIZE x BOARD_SIZE
-    Token m_board[16][16];
+    Token m_board[8][8];
     Token *d_board;
     __host__ __device__ void set_device_board();
 };
