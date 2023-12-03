@@ -2,15 +2,14 @@
 #include <curand_kernel.h>
 #include <queue>
 
-__global__ void simulatekernel(Node *children, long long rate, int num_children)
+__global__ void simulatekernel(Node *children, long long rate, int num_children, int batch)
 // __global__ void simulatekernel(long long rate, int num_children)
 {
     // printf("indx: %d", threadIdx.x);
     // int i = blockIdx.x * blockDim.x + threadIdx.x;
     // int j = blockIdx.y * blockDim.y + threadIdx.y;
-    int i = threadIdx.x;
-    if(i>16)return;
-
+    int i = batch * 16 + threadIdx.x;
+    
     if (i < num_children)
     {
         curandState_t state;
@@ -29,27 +28,27 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
 
         while (elapsedTime < 9000)
         {
-	    //cudaDeviceSynchronize();
-            // printf("Here ?\n");
-            // if (i == 0){
-            // printf("Simulating: %d \n", i);
-            // __syncthreads();
-            // if(i == 0){
-            //    parent->board.print_board();
-            // }
-            // __syncthreads();
-            // if (i == 2){
+            // cudaDeviceSynchronize();
+            //  printf("Here ?\n");
+            //  if (i == 0){
+            //  printf("Simulating: %d \n", i);
+            //  __syncthreads();
+            //  if(i == 0){
             //     parent->board.print_board();
-            // }
-            // }
-            // if (!parent->expanded)
-            // {
-            // printf("Here 1: %d, %d?\n", i, num_children);
-            // if (i == 0){
-            // printf("expansion 1: %d \n", i);
-            // }
-            // printf("before expansion\n");
-            // parent->board.print_board();
+            //  }
+            //  __syncthreads();
+            //  if (i == 2){
+            //      parent->board.print_board();
+            //  }
+            //  }
+            //  if (!parent->expanded)
+            //  {
+            //  printf("Here 1: %d, %d?\n", i, num_children);
+            //  if (i == 0){
+            //  printf("expansion 1: %d \n", i);
+            //  }
+            //  printf("before expansion\n");
+            //  parent->board.print_board();
             __syncthreads();
             Position *moves = parent->expand_device(i);
             // cudaThreadSynchronize();
@@ -114,11 +113,11 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
             // printf("The chosen one %d, %d \n", child->visited, child->sims);
 
             // Highly unoptimized - multiple calls to get-valid_moves
-             
+
             if (child->board.has_winner_device())
             {
                 // cudaThreadSynchronize();
-                
+
                 Token won = child->board.winner;
                 parent = child;
                 while (parent != &children[i])
@@ -169,27 +168,27 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                 {
                     parent->score += 2;
                 }
-                parent->sims+=1;
+                parent->sims += 1;
             }
             else
             {
                 // printf("Switching child to: %d, %d \n", child->move.row, child->move.col);
                 parent = child;
             }
-	    
-	    //parent=child;
-            //return;
-            //child = nullptr;
-            //delete child;
+
+            // parent=child;
             // return;
-            // printf("end_board \n");
-            // parent->board.print_board();
-            // printf("Clock\n\n\n\n\n");
+            // child = nullptr;
+            // delete child;
+            //  return;
+            //  printf("end_board \n");
+            //  parent->board.print_board();
+            //printf("Clock\n\n\n\n\n");
             end = clock64();
             elapsedTime = static_cast<double>(end - start) / rate;
         }
-	    __syncthreads();
-        // printf("score(%d): %d\n", i, children[i].score);
+        __syncthreads();
+        //printf("score(%d): %d\n", i, children[i].score);
 
         printf("Outside the while\n");
     }
@@ -207,7 +206,7 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
 MonteCarloTree::MonteCarloTree(Board board, Token player, Position move)
 {
     root = new Node();
-    root->children = new Node[8  * 8];
+    root->children = new Node[8 * 8];
     root->board = board;
     root->board.make_move(move.row, move.col, player);
     root->parent = nullptr;
@@ -283,84 +282,91 @@ Node *MonteCarloTree::get_parent(Node *node)
     return nullptr;
 }
 
-Node* MonteCarloTree::simulate(Node *node)
+Node *MonteCarloTree::simulate(Node *node)
 {
     node->board.move_to_gpu();
     node->expand_host();
     std::cout << "expanded " << node->num_children << std::endl;
-    Node *childs;
-    cudaMalloc(&childs, 8 * 8 * sizeof(Node));
-    std::cout << "Move: " << node->children[(8 * 6)].move.row << ", " << node->children[(8 * 6) - 1].move.col << std::endl;
-    cudaMemcpy(childs, node->children, 8 * 8 * sizeof(Node), cudaMemcpyHostToDevice);
-
-    dim3 block(8, 8);
-    dim3 grid(8 / block.x + 1, 8 / block.y + 1);
-
-    int temp_rate;
-
-    cudaError_t cudaStat = cudaDeviceGetAttribute(&temp_rate, cudaDevAttrClockRate, 0);
-
-    long long rate = (long long)temp_rate;
-
-    std::cout << "Inside the kernel " << node->num_children << std::endl;
-    // return node->move;
-    // for (int index = 0; index < 3; index++){
-    simulatekernel<<<1, 64>>>(childs, rate, node->num_children); // node->num_children);
-    // }
-    // simulatekernel<<<grid, block>>>(rate, node->num_children);
-    // cudaError_t err = cudaGetLastError();
-    // std::cout << "Error: " << cudaGetErrorString(err) << std::endl;
-    // cudaDeviceSynchronize();
-    // std::cout << "Simulation Finished" << std::endl;
-  
-    cudaDeviceSynchronize();
-    std::cout << "Outside the kernel " << std::endl;
-    cudaError_t err{cudaGetLastError()};
-
-    if (err != cudaSuccess)
-
+    for (int i = 0; i < 4; i++)
     {
+        node->board.move_to_gpu();
+        Node *childs;
+        cudaMalloc(&childs, 8 * 8 * sizeof(Node));
+        std::cout << "Move: " << node->children[(8 * 6)].move.row << ", " << node->children[(8 * 6) - 1].move.col << std::endl;
+        cudaMemcpy(childs, node->children, 8 * 8 * sizeof(Node), cudaMemcpyHostToDevice);
 
-        std::cout<< "CUDA Runtime Error: "<<cudaGetErrorString(err) << std::endl;
-        // We don't exit when we encounter CUDA errors in this example.
+        dim3 block(8, 8);
+        dim3 grid(8 / block.x + 1, 8 / block.y + 1);
 
-        // std::exit(EXIT_FAILURE);
+        int temp_rate;
 
+        cudaError_t cudaStat = cudaDeviceGetAttribute(&temp_rate, cudaDevAttrClockRate, 0);
+
+        long long rate = (long long)temp_rate;
+
+        std::cout << "Inside the kernel " << node->num_children << std::endl;
+        // return node->move;
+        // for (int index = 0; index < 3; index++){
+        simulatekernel<<<1, 16>>>(childs, rate, node->num_children, i); // node->num_children);
+        // }
+        // simulatekernel<<<grid, block>>>(rate, node->num_children);
+        // cudaError_t err = cudaGetLastError();
+        // std::cout << "Error: " << cudaGetErrorString(err) << std::endl;
+        // cudaDeviceSynchronize();
+        // std::cout << "Simulation Finished" << std::endl;
+
+        cudaDeviceSynchronize();
+        std::cout << "Outside the kernel " << std::endl;
+        cudaError_t err{cudaGetLastError()};
+
+        if (err != cudaSuccess)
+
+        {
+
+            std::cout << "CUDA Runtime Error: " << cudaGetErrorString(err) << std::endl;
+            // We don't exit when we encounter CUDA errors in this example.
+
+            // std::exit(EXIT_FAILURE);
+        }
+        cudaMemcpy(node->children, childs, 8 * 8 * sizeof(Node), cudaMemcpyDeviceToHost);
+        node->board.move_to_cpu();
+        cudaFree(childs);
+        cudaDeviceReset();
     }
-    cudaMemcpy(node->children, childs, 8 * 8 * sizeof(Node), cudaMemcpyDeviceToHost);
-    node->board.move_to_cpu();
-    cudaFree(childs);
-    cudaDeviceReset();
-    std::cout<<"Cumming"<<std::endl;
-    //return node->move;
-    Node* move = &node->children[0];//.move;
+    std::cout << "Cumming" << std::endl;
+    // return node->move;
+    Node *move = &node->children[0]; //.move;
     int max_score = -10000000;
-    int min_score =  10000000;
+    int min_score = 10000000;
     int selected = 0;
-    for (int i = 0; i <node->num_children; i++){
+    for (int i = 0; i < node->num_children; i++)
+    {
         std::cout << "Score " << i << ", " << selected << ": " << node->children[i].score << ", " << node->children[i].sims << std::endl;
-        if (root->player == Token::BLACK){
+        if (root->player == Token::BLACK)
+        {
             int player_score = node->children[i].score * node->children[i].sims;
-            if (player_score < min_score){
+            if (player_score < min_score)
+            {
                 min_score = player_score;
-                move = &node->children[i];//.move;
+                move = &node->children[i]; //.move;
                 selected = i;
             }
         }
-        if (root->player == Token::WHITE){
+        if (root->player == Token::WHITE)
+        {
             int player_score = node->children[i].score * node->children[i].sims;
-            if (player_score > max_score){
+            if (player_score > max_score)
+            {
                 min_score = player_score;
-                move = &node->children[i];//.move;
+                move = &node->children[i]; //.move;
                 selected = i;
             }
         }
-
     }
     return move;
     // for (int i = 0; i < 64; i++)
     // {
-	// std::cout<<"Score for thread "<<i<<" is: "<<node->children[i].score<<std::endl;
+    // std::cout<<"Score for thread "<<i<<" is: "<<node->children[i].score<<std::endl;
     //     if (node->children[i].score > max_score)
     //     {
     //         max_score = node->children[i].score;
