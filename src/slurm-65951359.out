@@ -1,0 +1,2 @@
+free(): invalid pointer
+/var/spool/slurmd.spool/job65951359/slurm_script: line 8: 1365780 Aborted                 (core dumped) ./play.out > mcts.txt

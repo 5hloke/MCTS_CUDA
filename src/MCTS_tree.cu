@@ -341,7 +341,7 @@ Node *MonteCarloTree::simulate(Node *node)
     int selected = 0;
     for (int i = 0; i < node->num_children; i++)
     {
-        std::cout << "Score " << i << ", " << selected << ": " << node->children[i].score << ", " << node->children[i].sims << std::endl;
+        
         if (root->player == Token::BLACK)
         {
             int player_score = node->children[i].score * node->children[i].sims;
@@ -352,16 +352,17 @@ Node *MonteCarloTree::simulate(Node *node)
                 selected = i;
             }
         }
-        if (root->player == Token::WHITE)
+        else if (root->player == Token::WHITE)
         {
             int player_score = node->children[i].score * node->children[i].sims;
             if (player_score > max_score)
             {
-                min_score = player_score;
+                max_score = player_score;
                 move = &node->children[i]; //.move;
                 selected = i;
             }
         }
+        std::cout << "Score (index, selected, score, sims, player, (row, col)): " << i << ", " << selected << ": " << node->children[i].score << ", " << node->children[i].sims <<  ", " << root->player <<"(" << node->children[i].move.row << ", " << node->children[i].move.col << ")"<< std::endl;
     }
     return move;
     // for (int i = 0; i < 64; i++)
