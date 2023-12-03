@@ -9,7 +9,7 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children,
     // int i = blockIdx.x * blockDim.x + threadIdx.x;
     // int j = blockIdx.y * blockDim.y + threadIdx.y;
     int i = batch * 16 + threadIdx.x;
-    
+
     if (i < num_children)
     {
         curandState_t state;
@@ -183,14 +183,14 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children,
             //  return;
             //  printf("end_board \n");
             //  parent->board.print_board();
-            //printf("Clock\n\n\n\n\n");
+            // printf("Clock\n\n\n\n\n");
             end = clock64();
             elapsedTime = static_cast<double>(end - start) / rate;
         }
         __syncthreads();
-        //printf("score(%d): %d\n", i, children[i].score);
+        // printf("score(%d): %d\n", i, children[i].score);
 
-        printf("Outside the while\n");
+        // printf("Outside the while\n");
     }
     else
     {
@@ -341,8 +341,8 @@ Node *MonteCarloTree::simulate(Node *node)
     int selected = 0;
     for (int i = 0; i < node->num_children; i++)
     {
-        
-        if (root->player == Token::BLACK)
+
+        if (root->player == Token::WHITE)
         {
             int player_score = node->children[i].score * node->children[i].sims;
             if (player_score < min_score)
@@ -352,7 +352,7 @@ Node *MonteCarloTree::simulate(Node *node)
                 selected = i;
             }
         }
-        else if (root->player == Token::WHITE)
+        else if (root->player == Token::BLACK)
         {
             int player_score = node->children[i].score * node->children[i].sims;
             if (player_score > max_score)
@@ -362,7 +362,7 @@ Node *MonteCarloTree::simulate(Node *node)
                 selected = i;
             }
         }
-        std::cout << "Score (index, selected, score, sims, player, (row, col)): " << i << ", " << selected << ": " << node->children[i].score << ", " << node->children[i].sims <<  ", " << root->player <<"(" << node->children[i].move.row << ", " << node->children[i].move.col << ")"<< std::endl;
+        std::cout << "Score (index, selected, score, sims, player, (row, col)): " << i << ", " << selected << ": " << node->children[i].score << ", " << node->children[i].sims << ", " << root->player << "(" << node->children[i].move.row << ", " << node->children[i].move.col << ")" << std::endl;
     }
     return move;
     // for (int i = 0; i < 64; i++)
