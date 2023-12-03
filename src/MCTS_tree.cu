@@ -17,13 +17,13 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
 
         // Node *parent = new Node();
         Node *parent = &children[i];
-        curand_init(587, i, 0, &state);
+        curand_init(700, i, 0, &state);
         long long int start = clock64();
         long long int end = start;
         double elapsedTime = static_cast<double>(end - start) / rate;
         //  printf("rate: %d \n", rate);
 
-        printf("Hmm: %d, %d \n", i, num_children);
+        // printf("Hmm: %d, %d \n", i, num_children);
         // }
         __syncthreads();
 
@@ -32,7 +32,7 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
 	    //cudaDeviceSynchronize();
             // printf("Here ?\n");
             // if (i == 0){
-            printf("Simulating: %d \n", i);
+            // printf("Simulating: %d \n", i);
             // __syncthreads();
             // if(i == 0){
             //    parent->board.print_board();
@@ -65,10 +65,10 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
             // pick a random number between 0 and 1
             __syncthreads();
             double random = curand_uniform(&state);
-            printf("Number of Children: %d, %d \n", parent->num_children, i);
+            // printf("Number of Children: %d, %d \n", parent->num_children, i);
 
             int chosen = static_cast<int>(random * parent->num_children);
-            printf("Chosen rand %d\n", chosen);
+            // printf("Chosen rand %d\n", chosen);
 
             // if (i == 0)
             // {
@@ -111,13 +111,14 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
             child->visited++;
 
             child->sims++;
-            printf("The chosen one %d, %d \n", child->visited, child->sims);
+            // printf("The chosen one %d, %d \n", child->visited, child->sims);
 
             // Highly unoptimized - multiple calls to get-valid_moves
              
             if (child->board.has_winner_device())
             {
                 // cudaThreadSynchronize();
+                
                 Token won = child->board.winner;
                 parent = child;
                 while (parent != &children[i])
@@ -140,9 +141,11 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                 {
                     parent->score += 5;
                 }
+                parent->sims += 1;
             }
             else if (child->board.is_draw())
             {
+                // printf("Backtracking draw\n");
                 int player = child->player;
                 parent = child;
                 while (parent != &children[i])
@@ -166,10 +169,11 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
                 {
                     parent->score += 2;
                 }
+                parent->sims+=1;
             }
             else
             {
-                printf("Switching child to: %d, %d \n", child->move.row, child->move.col);
+                // printf("Switching child to: %d, %d \n", child->move.row, child->move.col);
                 parent = child;
             }
 	    
@@ -180,11 +184,13 @@ __global__ void simulatekernel(Node *children, long long rate, int num_children)
             // return;
             // printf("end_board \n");
             // parent->board.print_board();
-            printf("Clock\n\n\n\n\n");
+            // printf("Clock\n\n\n\n\n");
             end = clock64();
             elapsedTime = static_cast<double>(end - start) / rate;
         }
-	__syncthreads();
+	    __syncthreads();
+        // printf("score(%d): %d\n", i, children[i].score);
+
         printf("Outside the while\n");
     }
     else
@@ -277,7 +283,7 @@ Node *MonteCarloTree::get_parent(Node *node)
     return nullptr;
 }
 
-Position MonteCarloTree::simulate(Node *node)
+Node* MonteCarloTree::simulate(Node *node)
 {
     node->board.move_to_gpu();
     node->expand_host();
@@ -305,7 +311,7 @@ Position MonteCarloTree::simulate(Node *node)
     // cudaError_t err = cudaGetLastError();
     // std::cout << "Error: " << cudaGetErrorString(err) << std::endl;
     // cudaDeviceSynchronize();
-    std::cout << "Simulation Finished" << std::endl;
+    // std::cout << "Simulation Finished" << std::endl;
   
     cudaDeviceSynchronize();
     std::cout << "Outside the kernel " << std::endl;
@@ -321,22 +327,46 @@ Position MonteCarloTree::simulate(Node *node)
         // std::exit(EXIT_FAILURE);
 
     }
-    cudaMemcpy(node->children, &childs, 8 * 8 * sizeof(Node), cudaMemcpyHostToDevice);
+    cudaMemcpy(node->children, childs, 8 * 8 * sizeof(Node), cudaMemcpyDeviceToHost);
     node->board.move_to_cpu();
     cudaFree(childs);
+    cudaDeviceReset();
     std::cout<<"Cumming"<<std::endl;
     //return node->move;
-    Position move = node->children[0].move;
-    int max_score = node->children[0].score;
-    for (int i = 0; i < 64; i++)
-    {
-	std::cout<<"Score for thread "<<i<<" is: "<<node->children[i].score<<std::endl;
-        if (node->children[i].score > max_score)
-        {
-            max_score = node->children[i].score;
-            move = node->children[i].move;
+    Node* move = &node->children[0];//.move;
+    int max_score = -10000000;
+    int min_score =  10000000;
+    int selected = 0;
+    for (int i = 0; i <node->num_children; i++){
+        std::cout << "Score " << i << ", " << selected << ": " << node->children[i].score << ", " << node->children[i].sims << std::endl;
+        if (root->player == Token::BLACK){
+            int player_score = node->children[i].score * node->children[i].sims;
+            if (player_score < min_score){
+                min_score = player_score;
+                move = &node->children[i];//.move;
+                selected = i;
+            }
         }
+        if (root->player == Token::WHITE){
+            int player_score = node->children[i].score * node->children[i].sims;
+            if (player_score > max_score){
+                min_score = player_score;
+                move = &node->children[i];//.move;
+                selected = i;
+            }
+        }
+
     }
     return move;
+    // for (int i = 0; i < 64; i++)
+    // {
+	// std::cout<<"Score for thread "<<i<<" is: "<<node->children[i].score<<std::endl;
+    //     if (node->children[i].score > max_score)
+    //     {
+    //         max_score = node->children[i].score;
+    //         move = node->children[i].move;
+    //     }
+    // }
+    // return move;
     // Code to select best possibble action. If all equal should we randomize?
 }

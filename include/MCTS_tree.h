@@ -8,9 +8,9 @@ using namespace std;
 
 struct Node
 {
-    int visited;
-    int wins;
-    int sims;
+    int visited = 0;
+    int wins = 0;
+    int sims = 0;
     int score;
     Node *parent;
     Node *children;
@@ -119,7 +119,7 @@ public:
     vector<Node *> get_children(Node *node);
     Node *get_parent(Node *node);
     ~MonteCarloTree();
-    Position simulate(Node *node); // These can be done on the GPU
+    Node* simulate(Node *node); // These can be done on the GPU
 
 private:
     int backpropagate(Node *node, int winner); // These can be done on the GPU

@@ -15,10 +15,30 @@ int main()
     // Position* vals = test_tree.root->board.get_valid_moves(count);
     // std::cout << "Count: " <<count << std::endl;
     // test_tree.root->board.print_board();
-
-    test_move = test_tree.simulate(test_tree.root);
+    Node* pos;
+    pos = test_tree.simulate(test_tree.root);
+    // std::cout << "Move: " << test_move.row << "," << test_move.col <<std::endl;
     std::cout << std::endl;
-    std::cout << std::endl;
+    // if (test_tree.root->player == Token::BLACK){
+    //    test_tree.root->player = Token::WHITE; 
+    // }
+    // else{
+    //     test_tree.root->player = Token::BLACK; 
+    // }
+    // test_tree.root->board.make_move(test_move.row, test_move.col, test_tree.root->player);
+    test_tree.root = pos;
+    test_tree.root->board.print_board();
+    test_tree.root->num_children = 0;
+    pos = test_tree.simulate(test_tree.root);
+    pos->board.print_board();
+    // std::cout << "Move: " << test_move.row << "," << test_move.col <<std::endl;
+    // std::cout << std::endl;
+    // if (test_tree.root->player == Token::BLACK){
+    //    test_tree.root->player = Token::WHITE; 
+    // }
+    // else{
+    //     test_tree.root->player = Token::BLACK; 
+    // }
     std::cout << "Simulation finished" << std::endl;
     return 0;
 }

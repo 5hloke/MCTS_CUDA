@@ -107,7 +107,7 @@ __global__ void check_winner_kernel(Token *board, Token *winner, int size, int w
     if ((up == 1 || down == 1 || left == 1 || right == 1 || d1 == 1 || d2 == 1 || d3 == 1 || d4 == 1) && *winner == Token::EMPTY)
     {
         *winner = player;
-        printf("Winner is (inside kernel): %d %d %d %d %d %d %d\n\n", *winner, i, j, up, down, left, right);
+        // printf("Winner is (inside kernel): %d %d %d %d %d %d %d\n\n", *winner, i, j, up, down, left, right);
         atomicAdd(count,1);
 	return;
     }
@@ -347,7 +347,7 @@ __device__ Token Board::get_winner_device()
     // printf("count outside: %d\n",count[0]); 
     this->winner = d_winner[0];
     winner = d_winner[0];
-    printf("Kernel ended, winner is: %d\n",winner);
+    // printf("Kernel ended, winner is: %d\n",winner);
     // move_to_cpu();
     return winner;
 }
@@ -382,7 +382,7 @@ __device__ Position *Board::get_valid_moves_device(int &num_moves)
     //         printf("Board Values:  %d\n", d_board[i*board_size + j]);
     //     }
     // }
-    printf("About to launch the kernel \n");
+    // printf("About to launch the kernel \n");
     valid_moves_kernel<<<grid, block>>>(d_board, board_size, device_valid_moves, device_valid_moves_count);
     /*
     valid_moves_kernel_tail<<<grid, block, 0, cudaStreamTailLaunch>>>();
@@ -451,7 +451,7 @@ __host__ Position *Board::get_valid_moves_host(int &num_moves)
 __host__ __device__ bool Board::is_draw()
 {
     int num_moves = 0;
-    printf("I am in draw now: %d \n", this->num_valid_moves);
+    // printf("I am in draw now: %d \n", this->num_valid_moves);
     // Position *valid_moves = get_valid_moves(num_moves);
     // delete[] valid_moves;
     return num_moves == this->num_valid_moves;
